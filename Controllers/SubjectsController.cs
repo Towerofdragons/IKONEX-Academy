@@ -23,6 +23,7 @@ namespace IKONEX_Academy.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateSubject([FromBody] CreateSubjectDto dto)
         {
+            // check if subject with this name or code already exists with anyasync
             if (await _context.Subjects.AnyAsync(s => s.Name.ToLower() == dto.Name.ToLower()))
             {
                 return BadRequest(new { error = "Subject with this name already exists" });
@@ -56,6 +57,8 @@ namespace IKONEX_Academy.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAllSubjects()
         {
+            // retrieve all subjects and order by name
+            // 
             var subjects = await _context.Subjects
                 .OrderBy(s => s.Name)
                 .Select(s => new SubjectDto
@@ -72,6 +75,7 @@ namespace IKONEX_Academy.Controllers
         [HttpPut("{id}")]
         public async Task<IActionResult> EditSubject(Guid id, [FromBody] UpdateSubjectDto dto)
         {
+            // check if subject with this name or code already exists
             var subject = await _context.Subjects.FindAsync(id);
             if (subject == null)
             {
@@ -121,6 +125,7 @@ namespace IKONEX_Academy.Controllers
         [HttpPost("/api/streams/{streamId}/subjects/{subjectId}")]
         public async Task<IActionResult> AssignSubjectToStream(Guid streamId, Guid subjectId)
         {
+            // check if stream and subject exists
             var streamExists = await _context.Streams.AnyAsync(s => s.Id == streamId);
             if (!streamExists)
             {
@@ -132,7 +137,7 @@ namespace IKONEX_Academy.Controllers
             {
                 return NotFound(new { error = "Subject not found" });
             }
-
+            // check if subject is already assigned to this stream
             var streamSubjectExists = await _context.StreamSubjects
                 .AnyAsync(ss => ss.StreamId == streamId && ss.SubjectId == subjectId);
 
@@ -147,10 +152,28 @@ namespace IKONEX_Academy.Controllers
                 SubjectId = subjectId
             };
 
+            // add to database
             _context.StreamSubjects.Add(streamSubject);
             await _context.SaveChangesAsync();
 
             return Ok(new { message = "Subject assigned to stream successfully" });
+        }
+
+        [HttpDelete("/api/streams/{streamId}/subjects/{subjectId}")]
+        public async Task<IActionResult> UnassignSubjectFromStream(Guid streamId, Guid subjectId)
+        {
+            var streamSubject = await _context.StreamSubjects
+                .FirstOrDefaultAsync(ss => ss.StreamId == streamId && ss.SubjectId == subjectId);
+
+            if (streamSubject == null)
+            {
+                return NotFound(new { error = "Subject is not assigned to this stream" });
+            }
+
+            _context.StreamSubjects.Remove(streamSubject);
+            await _context.SaveChangesAsync();
+
+            return NoContent();
         }
     }
 }
