@@ -1,10 +1,8 @@
 using System;
-using System.Linq;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using IKONEX_Academy.Data;
-using IKONEX_Academy.Entities;
+using IKONEX_Academy.Services;
 using IKONEX_Academy.DTOs.Score;
 
 namespace IKONEX_Academy.Controllers
@@ -13,114 +11,47 @@ namespace IKONEX_Academy.Controllers
     [Route("api/[controller]")]
     public class ScoresController : ControllerBase
     {
-        private readonly IkonexDbContext _context;
+        private readonly IScoreService _scoreService;
 
-        public ScoresController(IkonexDbContext context)
+        public ScoresController(IScoreService scoreService)
         {
-            _context = context;
+            _scoreService = scoreService;
         }
 
         [HttpPost]
         public async Task<IActionResult> RecordScore([FromBody] RecordScoreDto dto)
         {
-            // Validations
-            if (dto.ExamScore > 70 || dto.ExamScore < 0)
+            try
             {
-                return BadRequest(new { error = "ExamScore must be between 0 and 70" });
+                var result = await _scoreService.RecordScoreAsync(dto);
+                return CreatedAtRoute(null, new { id = result.Id }, result);
             }
-
-            if (dto.CAScore > 30 || dto.CAScore < 0)
+            catch (ArgumentException ex)
             {
-                return BadRequest(new { error = "CAScore must be between 0 and 30" });
+                return BadRequest(new { error = ex.Message });
             }
-
-            var student = await _context.Students.FindAsync(dto.StudentId);
-            if (student == null)
+            catch (InvalidOperationException ex)
             {
-                return BadRequest(new { error = "Student not found" });
+                return BadRequest(new { error = ex.Message });
             }
-
-            var subject = await _context.Subjects.FindAsync(dto.SubjectId);
-            if (subject == null)
-            {
-                return BadRequest(new { error = "Subject not found" });
-            }
-
-            var scoreExists = await _context.Scores.AnyAsync(s => s.StudentId == dto.StudentId && s.SubjectId == dto.SubjectId);
-            if (scoreExists)
-            {
-                return BadRequest(new { error = "Duplicate score submission prohibited" });
-            }
-
-            var score = new Score
-            {
-                Id = Guid.NewGuid(),
-                StudentId = dto.StudentId,
-                SubjectId = dto.SubjectId,
-                ExamScore = dto.ExamScore,
-                CAScore = dto.CAScore,
-                TotalScore = dto.ExamScore + dto.CAScore
-            };
-
-            _context.Scores.Add(score);
-            await _context.SaveChangesAsync();
-
-            var result = new ScoreDto
-            {
-                Id = score.Id,
-                StudentId = score.StudentId,
-                SubjectId = score.SubjectId,
-                SubjectName = subject.Name,
-                SubjectCode = subject.Code,
-                ExamScore = score.ExamScore,
-                CAScore = score.CAScore,
-                TotalScore = score.TotalScore
-            };
-
-            return CreatedAtRoute(null, new { id = score.Id }, result);
         }
 
         [HttpPut("{id}")]
         public async Task<IActionResult> EditScore(Guid id, [FromBody] UpdateScoreDto dto)
         {
-            if (dto.ExamScore > 70 || dto.ExamScore < 0)
+            try
             {
-                return BadRequest(new { error = "ExamScore must be between 0 and 70" });
+                var result = await _scoreService.EditScoreAsync(id, dto);
+                return Ok(result);
             }
-
-            if (dto.CAScore > 30 || dto.CAScore < 0)
+            catch (ArgumentException ex)
             {
-                return BadRequest(new { error = "CAScore must be between 0 and 30" });
+                return BadRequest(new { error = ex.Message });
             }
-
-            var score = await _context.Scores
-                .Include(s => s.Subject)
-                .FirstOrDefaultAsync(s => s.Id == id);
-
-            if (score == null)
+            catch (KeyNotFoundException ex)
             {
-                return NotFound(new { error = "Score record not found" });
+                return NotFound(new { error = ex.Message });
             }
-
-            score.ExamScore = dto.ExamScore;
-            score.CAScore = dto.CAScore;
-            score.TotalScore = dto.ExamScore + dto.CAScore;
-
-            await _context.SaveChangesAsync();
-
-            var result = new ScoreDto
-            {
-                Id = score.Id,
-                StudentId = score.StudentId,
-                SubjectId = score.SubjectId,
-                SubjectName = score.Subject?.Name ?? string.Empty,
-                SubjectCode = score.Subject?.Code ?? string.Empty,
-                ExamScore = score.ExamScore,
-                CAScore = score.CAScore,
-                TotalScore = score.TotalScore
-            };
-
-            return Ok(result);
         }
     }
 }
