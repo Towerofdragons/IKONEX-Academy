@@ -1,0 +1,26 @@
+# Build and compilation artifacts
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+
+# User-specific files
+*.rsuser
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# IDEs and Editors
+.vs/
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln.docstates
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
