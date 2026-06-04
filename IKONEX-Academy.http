@@ -1,0 +1,6 @@
+@IKONEX_Academy_HostAddress = http://localhost:5178
+
+GET {{IKONEX_Academy_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
