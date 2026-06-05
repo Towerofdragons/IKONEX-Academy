@@ -6,6 +6,6 @@ namespace IKONEX_Academy.Services
 {
     public interface IReportService
     {
-        Task<StreamReportDto> GenerateStreamReportAsync(Guid streamId);
+        Task<StreamReportDto> GenerateStreamReportAsync(Guid streamId, Guid? subjectId = null);
     }
 }

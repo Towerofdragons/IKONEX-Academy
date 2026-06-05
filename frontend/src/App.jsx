@@ -12,6 +12,9 @@ function App() {
   const [selectedStream, setSelectedStream] = useState(null);
   const [streamDetails, setStreamDetails] = useState(null);
   const [streamReport, setStreamReport] = useState(null);
+  const [leaderboardSubjectId, setLeaderboardSubjectId] = useState('');
+  const [selectedStudentDetail, setSelectedStudentDetail] = useState(null);
+  const [selectedStudentScores, setSelectedStudentScores] = useState(null);
 
   // Form states
   const [newStreamName, setNewStreamName] = useState('');
@@ -33,6 +36,24 @@ function App() {
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
     setTimeout(() => setToast(null), 4000);
+  };
+
+  const parseErrorMessage = (data, defaultMsg = 'An error occurred') => {
+    if (!data) return defaultMsg;
+    if (data.error) return data.error;
+    if (data.errors) {
+      const messages = [];
+      for (const key in data.errors) {
+        if (Array.isArray(data.errors[key])) {
+          messages.push(...data.errors[key]);
+        } else {
+          messages.push(data.errors[key]);
+        }
+      }
+      if (messages.length > 0) return messages.join(', ');
+    }
+    if (data.title) return data.title;
+    return defaultMsg;
   };
 
   const fetchBaselineData = async () => {
@@ -78,7 +99,7 @@ function App() {
         setNewStreamName('');
         fetchBaselineData();
       } else {
-        showToast(data.error || 'Failed to create stream', 'danger');
+        showToast(parseErrorMessage(data, 'Failed to create stream'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -94,8 +115,10 @@ function App() {
         setStreamDetails(details);
         setSelectedStream(id);
         setStreamReport(null); // Reset report when changing stream details
+        setLeaderboardSubjectId(''); // Reset subject filter when changing stream details
       } else {
-        showToast('Failed to load stream details', 'danger');
+        const data = await res.json();
+        showToast(parseErrorMessage(data, 'Failed to load stream details'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -104,16 +127,19 @@ function App() {
     }
   };
 
-  const loadStreamReport = async (id) => {
+  const loadStreamReport = async (id, subId = '') => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/reports/stream/${id}`);
+      const url = subId 
+        ? `${API_BASE}/reports/stream/${id}?subjectId=${subId}` 
+        : `${API_BASE}/reports/stream/${id}`;
+      const res = await fetch(url);
       if (res.ok) {
         const report = await res.json();
         setStreamReport(report);
       } else {
         const errData = await res.json();
-        showToast(errData.error || 'Failed to load report', 'danger');
+        showToast(parseErrorMessage(errData, 'Failed to load report'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -140,7 +166,7 @@ function App() {
         setAssignSubjectId('');
         loadStreamDetails(selectedStream);
       } else {
-        showToast(data.error || 'Failed to assign subject', 'danger');
+        showToast(parseErrorMessage(data, 'Failed to assign subject'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -159,7 +185,7 @@ function App() {
         loadStreamDetails(selectedStream);
       } else {
         const data = await res.json();
-        showToast(data.error || 'Failed to unassign subject', 'danger');
+        showToast(parseErrorMessage(data, 'Failed to unassign subject'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -192,7 +218,7 @@ function App() {
         setStudentForm({ name: '', regNumber: '', streamId: '', id: null });
         fetchBaselineData();
       } else {
-        showToast(data.error || 'Failed to submit student form', 'danger');
+        showToast(parseErrorMessage(data, 'Failed to submit student form'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -207,7 +233,8 @@ function App() {
         showToast('Student record deleted successfully.');
         fetchBaselineData();
       } else {
-        showToast('Failed to delete student.', 'danger');
+        const data = await res.json();
+        showToast(parseErrorMessage(data, 'Failed to delete student.'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -239,7 +266,7 @@ function App() {
         setSubjectForm({ name: '', code: '', id: null });
         fetchBaselineData();
       } else {
-        showToast(data.error || 'Failed to submit subject form', 'danger');
+        showToast(parseErrorMessage(data, 'Failed to submit subject form'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -254,7 +281,8 @@ function App() {
         showToast('Subject deleted successfully.');
         fetchBaselineData();
       } else {
-        showToast('Failed to delete subject.', 'danger');
+        const data = await res.json();
+        showToast(parseErrorMessage(data, 'Failed to delete subject.'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -296,10 +324,14 @@ function App() {
       const data = await res.json();
       if (res.ok) {
         showToast(isEdit ? 'Score card updated successfully!' : 'Score recorded successfully!');
+        const currentStudentId = scoreForm.studentId;
         setScoreForm({ studentId: '', subjectId: '', examScore: '', caScore: '', id: null });
         fetchBaselineData();
+        if (currentStudentId) {
+          handleLoadStudentScores(currentStudentId);
+        }
       } else {
-        showToast(data.error || 'Failed to record score', 'danger');
+        showToast(parseErrorMessage(data, 'Failed to record score'), 'danger');
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
@@ -308,20 +340,264 @@ function App() {
 
   // Helper to load student details for score editing
   const handleLoadStudentScores = async (studentId) => {
+    if (!studentId) {
+      setSelectedStudentScores(null);
+      return;
+    }
     setLoading(true);
     try {
       const res = await fetch(`${API_BASE}/students/${studentId}`);
       if (res.ok) {
         const detail = await res.json();
-        // Just populate the form with student selection
+        setSelectedStudentScores(detail);
         setScoreForm(prev => ({ ...prev, studentId }));
-        showToast(`Loaded score entries for ${detail.name}.`);
       }
     } catch (err) {
       showToast('API Connection Error', 'danger');
     } finally {
       setLoading(false);
     }
+  };
+
+  const handleViewStudentProfile = async (studentId) => {
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/students/${studentId}`);
+      if (res.ok) {
+        const detail = await res.json();
+        let reportData = null;
+        if (detail.streamId) {
+          try {
+            const repRes = await fetch(`${API_BASE}/reports/stream/${detail.streamId}`);
+            if (repRes.ok) {
+              reportData = await repRes.json();
+            }
+          } catch (e) {
+            console.error("Failed to load stream leaderboard report for profile", e);
+          }
+        }
+        setSelectedStudentDetail({ detail, reportData });
+      } else {
+        const data = await res.json();
+        showToast(parseErrorMessage(data, 'Failed to fetch student details'), 'danger');
+      }
+    } catch (err) {
+      showToast('API Connection Error', 'danger');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const exportStudentReportCard = async (studentDetail) => {
+    const { jsPDF } = await import('jspdf');
+    await import('jspdf-autotable');
+
+    const doc = new jsPDF();
+    const detail = studentDetail.detail;
+    const studentReport = studentDetail.reportData?.leaderboard?.find(l => l.studentId === detail.id);
+
+    // Document header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.setTextColor(99, 102, 241); // Primary color (#6366f1)
+    doc.text("IKONEX ACADEMY", 105, 20, { align: "center" });
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    doc.setTextColor(100, 116, 139);
+    doc.text("Student Term Report Card", 105, 27, { align: "center" });
+
+    // Header divider line
+    doc.setDrawColor(99, 102, 241);
+    doc.setLineWidth(1);
+    doc.line(15, 32, 195, 32);
+
+    // Student Info
+    doc.setFontSize(11);
+    doc.setTextColor(15, 23, 42);
+    doc.setFont("helvetica", "bold");
+    doc.text("STUDENT PROFILE", 15, 42);
+
+    doc.setFont("helvetica", "normal");
+    doc.setTextColor(51, 65, 85);
+    doc.text(`Name: ${detail.name}`, 15, 49);
+    doc.text(`Reg Number: ${detail.regNumber}`, 15, 55);
+    doc.text(`Class Stream: ${detail.streamName}`, 15, 61);
+
+    // Ranks and stats box
+    const statBoxX = 130;
+    const statBoxY = 38;
+    doc.setFillColor(248, 250, 252);
+    doc.rect(statBoxX, statBoxY, 65, 28, "F");
+    doc.setDrawColor(226, 232, 240);
+    doc.rect(statBoxX, statBoxY, 65, 28, "S");
+
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(15, 23, 42);
+    doc.text("ACADEMIC SUMMARY", statBoxX + 5, statBoxY + 6);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(10);
+    doc.setTextColor(51, 65, 85);
+    
+    if (studentReport) {
+      doc.text(`Class Rank: ${studentReport.overallPosition}`, statBoxX + 5, statBoxY + 13);
+      doc.text(`Average score: ${studentReport.averageScore}%`, statBoxX + 5, statBoxY + 19);
+      doc.text(`Final Grade: ${studentReport.grade}`, statBoxX + 5, statBoxY + 25);
+    } else {
+      doc.text("Rank: N/A", statBoxX + 5, statBoxY + 13);
+      doc.text("Average: N/A", statBoxX + 5, statBoxY + 19);
+      doc.text("Grade: N/A", statBoxX + 5, statBoxY + 25);
+    }
+
+    // Score Table
+    doc.setFontSize(11);
+    doc.setFont("helvetica", "bold");
+    doc.setTextColor(15, 23, 42);
+    doc.text("SUBJECT SCORE SHEETS", 15, 75);
+
+    // Build table rows
+    const tableHeaders = [["Subject Name", "Code", "CA (30)", "Exam (70)", "Total (100)", "Subject Position"]];
+    let tableRows = [];
+
+    if (studentReport && studentReport.subjectScores.length > 0) {
+      tableRows = studentReport.subjectScores.map(ss => [
+        ss.subjectName,
+        ss.subjectCode,
+        ss.caScore,
+        ss.examScore,
+        ss.totalScore,
+        ss.subjectPosition === 0 ? "N/A" : ss.subjectPosition === 1 ? "1st" : ss.subjectPosition === 2 ? "2nd" : ss.subjectPosition === 3 ? "3rd" : `${ss.subjectPosition}th`
+      ]);
+    } else if (detail.scores && detail.scores.length > 0) {
+      tableRows = detail.scores.map(sc => [
+        sc.subjectName,
+        sc.subjectCode,
+        sc.caScore,
+        sc.examScore,
+        sc.totalScore,
+        "N/A"
+      ]);
+    } else {
+      tableRows = [["No score records found", "", "", "", "", ""]];
+    }
+
+    doc.autoTable({
+      startY: 80,
+      head: tableHeaders,
+      body: tableRows,
+      theme: 'grid',
+      headStyles: {
+        fillColor: [99, 102, 241],
+        textColor: 255,
+        fontStyle: 'bold'
+      },
+      styles: {
+        font: 'helvetica',
+        fontSize: 10,
+        cellPadding: 3
+      },
+      columnStyles: {
+        0: { cellWidth: 70 },
+        1: { cellWidth: 25 },
+        2: { cellWidth: 20 },
+        3: { cellWidth: 20 },
+        4: { cellWidth: 20 },
+        5: { cellWidth: 25 }
+      }
+    });
+
+    // Signature Area
+    const finalY = doc.lastAutoTable.finalY + 20;
+    doc.setDrawColor(203, 213, 225);
+    doc.setLineWidth(0.5);
+    doc.line(15, finalY, 75, finalY);
+    doc.line(135, finalY, 195, finalY);
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(9);
+    doc.setTextColor(100, 116, 139);
+    doc.text("Class Teacher Signature", 45, finalY + 5, { align: "center" });
+    doc.text("Principal Signature", 165, finalY + 5, { align: "center" });
+
+    // Download PDF
+    doc.save(`${detail.name.replace(/\s+/g, '_')}_ReportCard.pdf`);
+    showToast(`PDF Report Card generated for ${detail.name}!`);
+  };
+
+  const exportClassPerformanceReport = async (streamReport, streamDetails) => {
+    const { jsPDF } = await import('jspdf');
+    await import('jspdf-autotable');
+
+    const doc = new jsPDF();
+
+    // Document header
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(22);
+    doc.setTextColor(16, 185, 129); // Success color (#10b981)
+    doc.text("IKONEX ACADEMY", 105, 20, { align: "center" });
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+    doc.setTextColor(100, 116, 139);
+    doc.text(`Class Performance Report Summary: ${streamReport.streamName} Stream`, 105, 27, { align: "center" });
+
+    // Header divider line
+    doc.setDrawColor(16, 185, 129);
+    doc.setLineWidth(1);
+    doc.line(15, 32, 195, 32);
+
+    // Meta details
+    doc.setFontSize(10);
+    doc.setTextColor(51, 65, 85);
+    doc.setFont("helvetica", "normal");
+    doc.text(`Total Students: ${streamReport.totalStudents}`, 15, 40);
+    doc.text(`Assigned Stream Subjects: ${streamDetails?.subjects?.length ?? 0}`, 15, 46);
+
+    const filterText = leaderboardSubjectId
+      ? `Ranking Filter: ${streamDetails?.subjects?.find(s => s.id === leaderboardSubjectId)?.name} Only`
+      : "Ranking Filter: Overall Performance (Sum of Stream Subjects)";
+    doc.text(filterText, 15, 52);
+
+    // Table Headers and Rows
+    const tableHeaders = [["Rank", "Student Name", "Reg Number", "Total Marks", "Avg Score", "Grade"]];
+    const tableRows = streamReport.leaderboard.map(st => [
+      st.overallPosition === 1 ? "1st" : st.overallPosition === 2 ? "2nd" : st.overallPosition === 3 ? "3rd" : `${st.overallPosition}th`,
+      st.studentName,
+      st.regNumber,
+      st.totalMarks,
+      `${st.averageScore}%`,
+      st.grade
+    ]);
+
+    doc.autoTable({
+      startY: 58,
+      head: tableHeaders,
+      body: tableRows,
+      theme: 'grid',
+      headStyles: {
+        fillColor: [16, 185, 129],
+        textColor: 255,
+        fontStyle: 'bold'
+      },
+      styles: {
+        font: 'helvetica',
+        fontSize: 9,
+        cellPadding: 3
+      }
+    });
+
+    // Page footer / timestamp
+    const pageCount = doc.internal.getNumberOfPages();
+    for(let i = 1; i <= pageCount; i++) {
+      doc.setPage(i);
+      doc.setFontSize(8);
+      doc.setTextColor(148, 163, 184);
+      doc.text(`Report Generated on: ${new Date().toLocaleDateString()} ${new Date().toLocaleTimeString()} - Page ${i} of ${pageCount}`, 105, 287, { align: "center" });
+    }
+
+    doc.save(`${streamReport.streamName.replace(/\s+/g, '_')}_PerformanceReport.pdf`);
+    showToast(`Class Performance PDF generated!`);
   };
 
   return (
@@ -567,10 +843,35 @@ function App() {
             {/* Generated Leaderboard Report */}
             {streamReport && (
               <div className="form-card" style={{ marginTop: '2rem', borderTop: '4px solid var(--primary-color)' }}>
-                <h3 style={{ marginBottom: '1.5rem' }}>Leaderboard: {streamReport.streamName} Stream</h3>
-                <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
-                  Averages are calculated as: <strong>Total Marks / Number of Stream-assigned subjects ({streamDetails.subjects.length})</strong>.
-                </p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                  <h3 style={{ margin: 0 }}>Leaderboard: {streamReport.streamName} Stream</h3>
+                  <button className="btn btn-secondary btn-small" onClick={() => exportClassPerformanceReport(streamReport, streamDetails)}>
+                    📥 Download Class PDF Report
+                  </button>
+                </div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+                  <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
+                    Averages are calculated as: <strong>Total Marks / Number of Stream-assigned subjects ({streamDetails?.subjects?.length ?? 0})</strong>.
+                  </p>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                    <label className="form-label" style={{ margin: 0, whiteSpace: 'nowrap', fontWeight: '500' }}>Rank By:</label>
+                    <select
+                      className="form-input"
+                      style={{ padding: '0.35rem 2rem 0.35rem 0.75rem', width: 'auto', margin: 0, height: '38px', borderRadius: '6px' }}
+                      value={leaderboardSubjectId}
+                      onChange={(e) => {
+                        const subId = e.target.value;
+                        setLeaderboardSubjectId(subId);
+                        loadStreamReport(selectedStream, subId);
+                      }}
+                    >
+                      <option value="">-- Overall Class Performance --</option>
+                      {streamDetails?.subjects?.map(sub => (
+                        <option key={sub.id} value={sub.id}>{sub.name} ({sub.code})</option>
+                      ))}
+                    </select>
+                  </div>
+                </div>
 
                 <div className="table-container">
                   <table className="table">
@@ -703,6 +1004,13 @@ function App() {
                           <td style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{st.streamId}</td>
                           <td style={{ textAlign: 'right' }}>
                             <button 
+                              className="btn btn-primary btn-small" 
+                              style={{ marginRight: '0.5rem' }}
+                              onClick={() => handleViewStudentProfile(st.id)}
+                            >
+                              Profile
+                            </button>
+                            <button 
                               className="btn btn-secondary btn-small" 
                               style={{ marginRight: '0.5rem' }}
                               onClick={() => setStudentForm({ name: st.name, regNumber: st.regNumber, streamId: st.streamId, id: st.id })}
@@ -818,7 +1126,7 @@ function App() {
 
             <div className="card-grid">
               <div className="form-card">
-                <h3>Record Assessment Score</h3>
+                <h3>{scoreForm.id ? 'Edit Assessment Score' : 'Record Assessment Score'}</h3>
                 <form onSubmit={handleScoreSubmit} style={{ marginTop: '1.25rem' }}>
                   <div className="form-group">
                     <label className="form-label">Select Student</label>
@@ -830,6 +1138,7 @@ function App() {
                         if (e.target.value) handleLoadStudentScores(e.target.value);
                       }}
                       required
+                      disabled={!!scoreForm.id}
                     >
                       <option value="">-- Choose Student --</option>
                       {students.map(st => (
@@ -844,6 +1153,7 @@ function App() {
                       value={scoreForm.subjectId}
                       onChange={(e) => setScoreForm({ ...scoreForm, subjectId: e.target.value })}
                       required
+                      disabled={!!scoreForm.id}
                     >
                       <option value="">-- Choose Subject --</option>
                       {subjects.map(sub => (
@@ -876,9 +1186,78 @@ function App() {
                     />
                   </div>
                   
-                  <button type="submit" className="btn btn-primary" style={{ width: '100%' }}>Submit Score Card</button>
+                  <div style={{ display: 'flex', gap: '0.5rem' }}>
+                    <button type="submit" className="btn btn-primary" style={{ flex: 1 }}>
+                      {scoreForm.id ? 'Update Score' : 'Submit Score'}
+                    </button>
+                    {scoreForm.id && (
+                      <button 
+                        type="button" 
+                        className="btn btn-secondary" 
+                        onClick={() => setScoreForm({ studentId: scoreForm.studentId, subjectId: '', examScore: '', caScore: '', id: null })}
+                      >
+                        Cancel
+                      </button>
+                    )}
+                  </div>
                 </form>
               </div>
+
+              {/* Recorded scores for selected student */}
+              {selectedStudentScores && (
+                <div className="form-card" style={{ gridColumn: 'span 2' }}>
+                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
+                    <h3>Recorded Scores for {selectedStudentScores.name}</h3>
+                    <button className="btn btn-secondary btn-small" onClick={() => handleLoadStudentScores(selectedStudentScores.id)}>Refresh</button>
+                  </div>
+                  {selectedStudentScores.scores.length === 0 ? (
+                    <p style={{ color: 'var(--text-secondary)' }}>No scores recorded for this student yet.</p>
+                  ) : (
+                    <div className="table-container">
+                      <table className="table">
+                        <thead>
+                          <tr>
+                            <th>Subject</th>
+                            <th>Code</th>
+                            <th>CA (30)</th>
+                            <th>Exam (70)</th>
+                            <th>Total (100)</th>
+                            <th style={{ textAlign: 'right' }}>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {selectedStudentScores.scores.map(sc => (
+                            <tr key={sc.id}>
+                              <td><strong>{sc.subjectName}</strong></td>
+                              <td><code>{sc.subjectCode}</code></td>
+                              <td>{sc.caScore}</td>
+                              <td>{sc.examScore}</td>
+                              <td><strong>{sc.totalScore}</strong></td>
+                              <td style={{ textAlign: 'right' }}>
+                                <button 
+                                  className="btn btn-secondary btn-small" 
+                                  onClick={() => {
+                                    setScoreForm({
+                                      id: sc.id,
+                                      studentId: sc.studentId,
+                                      subjectId: sc.subjectId,
+                                      caScore: sc.caScore.toString(),
+                                      examScore: sc.examScore.toString()
+                                    });
+                                    showToast(`Loaded score for ${sc.subjectName} to edit.`);
+                                  }}
+                                >
+                                  Edit
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                  )}
+                </div>
+              )}
 
               <div className="form-card" style={{ gridColumn: 'span 2' }}>
                 <h3>Quick Roster Selection</h3>
@@ -903,7 +1282,7 @@ function App() {
                           <td><code>{st.regNumber}</code></td>
                           <td style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{st.id}</td>
                           <td style={{ textAlign: 'right' }}>
-                            <button className="btn btn-primary btn-small" onClick={() => setScoreForm(prev => ({ ...prev, studentId: st.id }))}>
+                            <button className="btn btn-primary btn-small" onClick={() => handleLoadStudentScores(st.id)}>
                               Select
                             </button>
                           </td>
@@ -917,6 +1296,106 @@ function App() {
           </div>
         )}
       </main>
+
+      {/* Student Transcript Modal */}
+      {selectedStudentDetail && (
+        <div className="modal-overlay" onClick={() => setSelectedStudentDetail(null)}>
+          <div className="modal-card" onClick={(e) => e.stopPropagation()}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', borderBottom: '1px solid var(--border-color)', paddingBottom: '1rem' }}>
+              <div>
+                <h2 style={{ margin: 0, color: 'var(--primary-color)' }}>Student Profile & Transcript</h2>
+                <p style={{ margin: '0.25rem 0 0 0', color: 'var(--text-secondary)' }}>Ikonex Academy SMS</p>
+              </div>
+              <button className="btn btn-secondary btn-small" onClick={() => setSelectedStudentDetail(null)}>✕</button>
+            </div>
+
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem', marginBottom: '1.5rem' }}>
+              <div>
+                <p style={{ margin: '0.35rem 0' }}><strong>Name:</strong> {selectedStudentDetail.detail.name}</p>
+                <p style={{ margin: '0.35rem 0' }}><strong>Registration Number:</strong> <code>{selectedStudentDetail.detail.regNumber}</code></p>
+                <p style={{ margin: '0.35rem 0' }}><strong>Class Stream:</strong> {selectedStudentDetail.detail.streamName}</p>
+              </div>
+              <div style={{ background: 'rgba(255,255,255,0.02)', padding: '1rem', borderRadius: '8px', border: '1px solid var(--border-color)' }}>
+                {(() => {
+                  const studentReport = selectedStudentDetail.reportData?.leaderboard?.find(l => l.studentId === selectedStudentDetail.detail.id);
+                  if (studentReport) {
+                    return (
+                      <>
+                        <p style={{ margin: '0.25rem 0' }}><strong>Overall Class Rank:</strong> <span className={`rank-badge rank-${studentReport.overallPosition === 1 ? '1st' : studentReport.overallPosition === 2 ? '2nd' : studentReport.overallPosition === 3 ? '3rd' : 'other'}`}>{studentReport.overallPosition === 1 ? '1st' : studentReport.overallPosition === 2 ? '2nd' : studentReport.overallPosition === 3 ? '3rd' : `${studentReport.overallPosition}th`}</span></p>
+                        <p style={{ margin: '0.25rem 0' }}><strong>Average Score:</strong> {studentReport.averageScore}%</p>
+                        <p style={{ margin: '0.25rem 0' }}><strong>Overall Grade:</strong> <span className={`badge-grade badge-${studentReport.grade.toLowerCase()}`}>{studentReport.grade}</span></p>
+                      </>
+                    );
+                  } else {
+                    return <p style={{ margin: 0, color: 'var(--text-secondary)', fontSize: '0.85rem' }}>No overall ranking processed yet. Add scores and click "Process Leaderboard" in Stream Manager.</p>;
+                  }
+                })()}
+              </div>
+            </div>
+
+            <h4 style={{ marginBottom: '0.75rem', color: 'var(--text-primary)' }}>Subject-by-Subject Score Breakdown</h4>
+            <div className="table-container" style={{ maxHeight: '250px', overflowY: 'auto' }}>
+              <table className="table">
+                <thead>
+                  <tr>
+                    <th>Subject Name</th>
+                    <th>Code</th>
+                    <th>CA (30)</th>
+                    <th>Exam (70)</th>
+                    <th>Total (100)</th>
+                    <th>Subject Rank</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {(() => {
+                    const studentReport = selectedStudentDetail.reportData?.leaderboard?.find(l => l.studentId === selectedStudentDetail.detail.id);
+                    if (studentReport && studentReport.subjectScores.length > 0) {
+                      return studentReport.subjectScores.map(ss => (
+                        <tr key={ss.subjectId}>
+                          <td>{ss.subjectName}</td>
+                          <td><code>{ss.subjectCode}</code></td>
+                          <td>{ss.caScore}</td>
+                          <td>{ss.examScore}</td>
+                          <td><strong>{ss.totalScore}</strong></td>
+                          <td>
+                            <span className="rank-badge other" style={{ background: 'rgba(99, 102, 241, 0.15)', color: 'var(--primary-color)' }}>
+                              {ss.subjectPosition === 0 ? 'N/A' : ss.subjectPosition === 1 ? '1st' : ss.subjectPosition === 2 ? '2nd' : ss.subjectPosition === 3 ? '3rd' : `${ss.subjectPosition}th`}
+                            </span>
+                          </td>
+                        </tr>
+                      ));
+                    } else if (selectedStudentDetail.detail.scores && selectedStudentDetail.detail.scores.length > 0) {
+                      return selectedStudentDetail.detail.scores.map(sc => (
+                        <tr key={sc.id}>
+                          <td>{sc.subjectName}</td>
+                          <td><code>{sc.subjectCode}</code></td>
+                          <td>{sc.caScore}</td>
+                          <td>{sc.examScore}</td>
+                          <td><strong>{sc.totalScore}</strong></td>
+                          <td><span className="rank-badge other">N/A</span></td>
+                        </tr>
+                      ));
+                    } else {
+                      return (
+                        <tr>
+                          <td colSpan="6" style={{ textAlign: 'center', color: 'var(--text-secondary)' }}>No scores recorded yet.</td>
+                        </tr>
+                      );
+                    }
+                  })()}
+                </tbody>
+              </table>
+            </div>
+
+            <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1.5rem', borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
+              <button className="btn btn-primary" onClick={() => exportStudentReportCard(selectedStudentDetail)}>
+                📥 Download PDF Report Card
+              </button>
+              <button className="btn btn-secondary" onClick={() => setSelectedStudentDetail(null)}>Close</button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

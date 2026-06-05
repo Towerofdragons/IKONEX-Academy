@@ -18,7 +18,7 @@ namespace IKONEX_Academy.Services
             _context = context;
         }
 
-        public async Task<StreamReportDto> GenerateStreamReportAsync(Guid streamId)
+        public async Task<StreamReportDto> GenerateStreamReportAsync(Guid streamId, Guid? subjectId = null)
         {
             var stream = await _context.Streams.FindAsync(streamId);
             if (stream == null)
@@ -118,19 +118,45 @@ namespace IKONEX_Academy.Services
                 });
             }
 
-            // 3. Calculate Overall Class Position
-            var sortedLeaderboard = studentReports
-                .OrderByDescending(s => s.TotalMarks)
-                .ToList();
-
-            int overallRank = 1;
-            for (int i = 0; i < sortedLeaderboard.Count; i++)
+            // 3. Calculate Overall Class Position (or Subject-specific overall rank in the leaderboard)
+            List<StudentReportDto> sortedLeaderboard;
+            if (subjectId.HasValue)
             {
-                if (i > 0 && sortedLeaderboard[i].TotalMarks < sortedLeaderboard[i - 1].TotalMarks)
+                sortedLeaderboard = studentReports
+                    .OrderByDescending(s => s.SubjectScores.FirstOrDefault(ss => ss.SubjectId == subjectId.Value)?.TotalScore ?? 0.0)
+                    .ThenByDescending(s => s.TotalMarks)
+                    .ToList();
+
+                int overallRank = 1;
+                for (int i = 0; i < sortedLeaderboard.Count; i++)
                 {
-                    overallRank = i + 1;
+                    double currentSubjectScore = sortedLeaderboard[i].SubjectScores.FirstOrDefault(ss => ss.SubjectId == subjectId.Value)?.TotalScore ?? 0.0;
+                    if (i > 0)
+                    {
+                        double prevSubjectScore = sortedLeaderboard[i - 1].SubjectScores.FirstOrDefault(ss => ss.SubjectId == subjectId.Value)?.TotalScore ?? 0.0;
+                        if (currentSubjectScore < prevSubjectScore)
+                        {
+                            overallRank = i + 1;
+                        }
+                    }
+                    sortedLeaderboard[i].OverallPosition = overallRank;
                 }
-                sortedLeaderboard[i].OverallPosition = overallRank;
+            }
+            else
+            {
+                sortedLeaderboard = studentReports
+                    .OrderByDescending(s => s.TotalMarks)
+                    .ToList();
+
+                int overallRank = 1;
+                for (int i = 0; i < sortedLeaderboard.Count; i++)
+                {
+                    if (i > 0 && sortedLeaderboard[i].TotalMarks < sortedLeaderboard[i - 1].TotalMarks)
+                    {
+                        overallRank = i + 1;
+                    }
+                    sortedLeaderboard[i].OverallPosition = overallRank;
+                }
             }
 
             return new StreamReportDto

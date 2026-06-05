@@ -18,11 +18,11 @@ namespace IKONEX_Academy.Controllers
         }
 
         [HttpGet("stream/{streamId}")]
-        public async Task<IActionResult> GetStreamReport(Guid streamId)
+        public async Task<IActionResult> GetStreamReport(Guid streamId, [FromQuery] Guid? subjectId = null)
         {
             try
             {
-                var report = await _reportService.GenerateStreamReportAsync(streamId);
+                var report = await _reportService.GenerateStreamReportAsync(streamId, subjectId);
                 return Ok(report);
             }
             catch (KeyNotFoundException ex)
