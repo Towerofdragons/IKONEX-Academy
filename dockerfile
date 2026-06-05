@@ -19,4 +19,4 @@ COPY --from=build /app/out .
 EXPOSE 8080
 
 # Run the API executable
-ENTRYPOINT ["dotnet", "YourProjectName.dll"]
+ENTRYPOINT ["dotnet", "IKONEX_Academy.dll"]
