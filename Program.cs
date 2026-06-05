@@ -91,8 +91,9 @@ builder.Services.AddCors(options =>
     });
 });
 
-// Configure OpenAPI
-builder.Services.AddOpenApi();
+// Configure Swagger API documentation
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -109,11 +110,14 @@ app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
 // Enable CORS
 app.UseCors("AllowAll");
 
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
+// Enable Swagger UI middleware
+app.UseSwagger();
+app.UseSwaggerUI(c =>
 {
-    app.MapOpenApi();
-}
+    c.SwaggerEndpoint("/swagger/v1/swagger.json", "IKONEX Academy API v1");
+    c.RoutePrefix = "swagger";
+});
+
 
 app.UseHttpsRedirection();
 
