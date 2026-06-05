@@ -1,11 +1,16 @@
 using Microsoft.EntityFrameworkCore;
 using IKONEX_Academy.Data;
 using IKONEX_Academy.Middleware;
+using IKONEX_Academy.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllers();
+
+// Register Custom Services
+builder.Services.AddScoped<IReportService, ReportService>();
+builder.Services.AddScoped<IScoreService, ScoreService>();
 
 // Configure EF Core with PostgreSQL
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
