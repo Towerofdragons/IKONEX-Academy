@@ -81,15 +81,32 @@ builder.Services.AddDbContext<IkonexDbContext>(options =>
     options.UseNpgsql(connectionString));
 
 // Configure Global CORS Policy
+var allowedOriginsVar = Environment.GetEnvironmentVariable("ALLOWED_CORS_ORIGINS");
+var allowedOrigins = !string.IsNullOrEmpty(allowedOriginsVar)
+    ? allowedOriginsVar.Split(',', StringSplitOptions.RemoveEmptyEntries)
+                       .Select(o => o.Trim().TrimEnd('/'))
+                       .ToArray()
+    : Array.Empty<string>();
+
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll", policy =>
     {
-        policy.AllowAnyOrigin()
-              .AllowAnyHeader()
-              .AllowAnyMethod();
+        if (allowedOrigins.Length > 0)
+        {
+            policy.WithOrigins(allowedOrigins)
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
+        else
+        {
+            policy.AllowAnyOrigin()
+                  .AllowAnyHeader()
+                  .AllowAnyMethod();
+        }
     });
 });
+
 
 // Configure Swagger API documentation
 builder.Services.AddEndpointsApiExplorer();
