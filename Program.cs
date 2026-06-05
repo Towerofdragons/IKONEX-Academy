@@ -43,19 +43,37 @@ builder.Services.AddScoped<IScoreService, ScoreService>();
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
 if (string.IsNullOrEmpty(connectionString))
 {
-    var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
-    var dbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
-    var dbName = Environment.GetEnvironmentVariable("DB_DATABASE");
-    var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME");
-    var dbPass = Environment.GetEnvironmentVariable("DB_PASSWORD");
-
-    if (!string.IsNullOrEmpty(dbHost) && !string.IsNullOrEmpty(dbName) && !string.IsNullOrEmpty(dbUser) && !string.IsNullOrEmpty(dbPass))
+    var databaseUrl = Environment.GetEnvironmentVariable("DATABASE_URL");
+    if (!string.IsNullOrEmpty(databaseUrl))
     {
-        connectionString = $"Host={dbHost};Port={dbPort};Database={dbName};Username={dbUser};Password={dbPass};";
+        // Parse database URL (e.g. postgresql://username:password@host:port/database)
+        var formattedUrl = databaseUrl.Replace("postgresql://", "postgres://");
+        var uri = new Uri(formattedUrl);
+        var userInfo = uri.UserInfo.Split(':');
+        var username = userInfo[0];
+        var password = userInfo.Length > 1 ? userInfo[1] : string.Empty;
+        var host = uri.Host;
+        var dbPort = uri.Port == -1 ? 5432 : uri.Port;
+        var database = uri.AbsolutePath.TrimStart('/');
+
+        connectionString = $"Host={host};Port={dbPort};Database={database};Username={username};Password={password};Trust Server Certificate=True;";
     }
     else
     {
-        connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        var dbHost = Environment.GetEnvironmentVariable("DB_HOST");
+        var dbPort = Environment.GetEnvironmentVariable("DB_PORT") ?? "5432";
+        var dbName = Environment.GetEnvironmentVariable("DB_DATABASE");
+        var dbUser = Environment.GetEnvironmentVariable("DB_USERNAME");
+        var dbPass = Environment.GetEnvironmentVariable("DB_PASSWORD");
+
+        if (!string.IsNullOrEmpty(dbHost) && !string.IsNullOrEmpty(dbName) && !string.IsNullOrEmpty(dbUser) && !string.IsNullOrEmpty(dbPass))
+        {
+            connectionString = $"Host={dbHost};Port={dbPort};Database={dbName};Username={dbUser};Password={dbPass};";
+        }
+        else
+        {
+            connectionString = builder.Configuration.GetConnectionString("DefaultConnection");
+        }
     }
 }
 
@@ -77,6 +95,13 @@ builder.Services.AddCors(options =>
 builder.Services.AddOpenApi();
 
 var app = builder.Build();
+
+// Automatically apply database migrations on startup for seamless container deployment
+using (var scope = app.Services.CreateScope())
+{
+    var db = scope.ServiceProvider.GetRequiredService<IkonexDbContext>();
+    db.Database.Migrate();
+}
 
 // Register Custom Global Exception Handling Middleware FIRST in request pipeline
 app.UseMiddleware<GlobalExceptionHandlingMiddleware>();
