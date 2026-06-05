@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-const API_BASE = 'http://localhost:5178/api';
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5178/api';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -376,7 +376,7 @@ function App() {
           <div className="form-card" style={{ borderLeft: '4px solid var(--danger-color)', background: 'rgba(239, 68, 68, 0.05)' }}>
             <h3 style={{ color: 'var(--danger-color)', marginBottom: '0.5rem' }}>API Connection Offline</h3>
             <p style={{ color: 'var(--text-secondary)' }}>
-              Could not communicate with the backend at <strong>{API_BASE}</strong>. Ensure the ASP.NET Core API server is running on port 5178 and CORS is fully enabled.
+              Could not communicate with the backend at <strong>{API_BASE}</strong>. Ensure the ASP.NET Core API server is running at the configured endpoint and CORS is fully enabled.
             </p>
           </div>
         )}
