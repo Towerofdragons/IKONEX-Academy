@@ -24,3 +24,9 @@ obj/
 Thumbs.db
 ehthumbs.db
 Desktop.ini
+
+# Local env files
+.env
+.env.local
+.env.*.local
+
