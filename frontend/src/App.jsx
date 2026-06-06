@@ -471,7 +471,7 @@ function App() {
 
   const exportStudentReportCard = async (studentDetail) => {
     const { jsPDF } = await import('jspdf');
-    await import('jspdf-autotable');
+    const { autoTable } = await import('jspdf-autotable');
 
     const doc = new jsPDF();
     const detail = studentDetail.detail;
@@ -563,7 +563,7 @@ function App() {
       tableRows = [["No score records found", "", "", "", "", ""]];
     }
 
-    doc.autoTable({
+    autoTable(doc, {
       startY: 80,
       head: tableHeaders,
       body: tableRows,
@@ -608,7 +608,7 @@ function App() {
 
   const exportClassPerformanceReport = async (streamReport, streamDetails) => {
     const { jsPDF } = await import('jspdf');
-    await import('jspdf-autotable');
+    const { autoTable } = await import('jspdf-autotable');
 
     const doc = new jsPDF();
 
@@ -651,7 +651,7 @@ function App() {
       st.grade
     ]);
 
-    doc.autoTable({
+    autoTable(doc, {
       startY: 58,
       head: tableHeaders,
       body: tableRows,
