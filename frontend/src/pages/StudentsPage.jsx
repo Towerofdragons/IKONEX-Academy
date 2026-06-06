@@ -133,8 +133,8 @@ export default function StudentsPage() {
                 ))}
               </select>
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button type="submit" className="btn btn-primary" style={{ flex: 1 }}>
+            <div className="btn-group">
+              <button type="submit" className="btn btn-primary">
                 {studentForm.id ? 'Save Updates' : 'Register Student'}
               </button>
               {studentForm.id && (
@@ -165,23 +165,23 @@ export default function StudentsPage() {
                     <td><code>{st.regNumber}</code></td>
                     <td style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{st.streamId}</td>
                     <td style={{ textAlign: 'right' }}>
-                      <button
-                        type="button"
-                        className="btn btn-primary btn-small"
-                        style={{ marginRight: '0.5rem' }}
-                        onClick={() => handleViewStudentProfile(st.id)}
-                      >
-                        Profile
-                      </button>
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-small"
-                        style={{ marginRight: '0.5rem' }}
-                        onClick={() => setStudentForm({ name: st.name, regNumber: st.regNumber, streamId: st.streamId, id: st.id })}
-                      >
-                        Edit
-                      </button>
-                      <button type="button" className="btn btn-danger btn-small" onClick={() => handleStudentDelete(st.id)}>Delete</button>
+                      <div className="btn-group" style={{ justifyContent: 'flex-end' }}>
+                        <button
+                          type="button"
+                          className="btn btn-primary btn-small"
+                          onClick={() => handleViewStudentProfile(st.id)}
+                        >
+                          Profile
+                        </button>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-small"
+                          onClick={() => setStudentForm({ name: st.name, regNumber: st.regNumber, streamId: st.streamId, id: st.id })}
+                        >
+                          Edit
+                        </button>
+                        <button type="button" className="btn btn-danger btn-small" onClick={() => handleStudentDelete(st.id)}>Delete</button>
+                      </div>
                     </td>
                   </tr>
                 ))}

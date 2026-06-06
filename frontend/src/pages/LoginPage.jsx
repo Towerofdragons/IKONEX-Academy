@@ -41,8 +41,8 @@ export default function LoginPage() {
       <div className="login-card">
         <div className="login-header">
           <div className="brand-logo" style={{ margin: '0 auto 1rem auto' }}>I</div>
-          <h2 className="brand-name" style={{ textAlign: 'center', fontSize: '1.75rem', background: 'linear-gradient(to right, #ffffff, #9ca3af)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '700' }}>Ikonex SMS Admin</h2>
-          <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem', fontSize: '0.9rem' }}>Sign in to access school administration</p>
+          <h2 className="brand-name" style={{ textAlign: 'center', fontSize: '1.5rem', fontWeight: '600', color: 'var(--text-primary)' }}>Ikonex SMS Admin</h2>
+          <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem', fontSize: '0.875rem' }}>Sign in to access school administration</p>
         </div>
         <form onSubmit={handleLogin} style={{ marginTop: '2rem' }}>
           <div className="form-group">

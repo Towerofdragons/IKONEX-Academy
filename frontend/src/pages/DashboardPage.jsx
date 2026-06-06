@@ -7,10 +7,12 @@ export default function DashboardPage() {
     <div>
       <div className="header-row">
         <h2 className="page-title">Operational Dashboard</h2>
-        <button type="button" className="btn btn-secondary" onClick={fetchBaselineData}>Refresh Stats</button>
+        <div className="btn-group">
+          <button type="button" className="btn btn-secondary" onClick={fetchBaselineData}>Refresh Stats</button>
+        </div>
       </div>
 
-      <div className="card-grid">
+      <div className="card-grid" style={{ gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))' }}>
         <div className="stat-card">
           <div className="stat-icon">🏫</div>
           <div className="stat-info">

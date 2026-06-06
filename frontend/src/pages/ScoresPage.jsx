@@ -144,8 +144,8 @@ export default function ScoresPage() {
               />
             </div>
 
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button type="submit" className="btn btn-primary" style={{ flex: 1 }}>
+            <div className="btn-group">
+              <button type="submit" className="btn btn-primary">
                 {scoreForm.id ? 'Update Score' : 'Submit Score'}
               </button>
               {scoreForm.id && (
@@ -163,9 +163,11 @@ export default function ScoresPage() {
 
         {selectedStudentScores && (
           <div className="form-card" style={{ gridColumn: 'span 2' }}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
-              <h3>Recorded Scores for {selectedStudentScores.name}</h3>
-              <button type="button" className="btn btn-secondary btn-small" onClick={() => handleLoadStudentScores(selectedStudentScores.id)}>Refresh</button>
+            <div className="header-row" style={{ marginBottom: '1.25rem' }}>
+              <h3 style={{ margin: 0 }}>Recorded Scores for {selectedStudentScores.name}</h3>
+              <div className="btn-group">
+                <button type="button" className="btn btn-secondary btn-small" onClick={() => handleLoadStudentScores(selectedStudentScores.id)}>Refresh</button>
+              </div>
             </div>
             {selectedStudentScores.scores.length === 0 ? (
               <p style={{ color: 'var(--text-secondary)' }}>No scores recorded for this student yet.</p>

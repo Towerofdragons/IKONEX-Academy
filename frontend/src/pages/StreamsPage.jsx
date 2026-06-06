@@ -165,7 +165,7 @@ export default function StreamsPage() {
                 </thead>
                 <tbody>
                   {streams.map(s => (
-                    <tr key={s.id} style={{ background: selectedStream === s.id ? 'rgba(99, 102, 241, 0.1)' : 'transparent' }}>
+                    <tr key={s.id} style={{ background: selectedStream === s.id ? '#E0E7FF' : 'transparent' }}>
                       <td><strong>{s.name}</strong></td>
                       <td style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{s.id}</td>
                       <td style={{ textAlign: 'right' }}>
@@ -182,21 +182,24 @@ export default function StreamsPage() {
 
       {selectedStream && streamDetails && (
         <div className="form-card" style={{ marginTop: '2rem' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem' }}>
-            <h3>Stream Details: {streamDetails.name}</h3>
-            <button type="button" className="btn btn-primary" onClick={() => loadStreamReport(selectedStream)}>
-              📊 Process Leaderboard Report
-            </button>
+          <div className="header-row" style={{ marginBottom: '1.5rem' }}>
+            <h3 style={{ margin: 0 }}>Stream Details: {streamDetails.name}</h3>
+            <div className="btn-group">
+              <button type="button" className="btn btn-primary" onClick={() => loadStreamReport(selectedStream)}>
+                📊 Process Leaderboard Report
+              </button>
+            </div>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '2rem' }}>
             <div>
               <h4 style={{ marginBottom: '1rem', color: 'var(--primary-color)' }}>Assigned Subjects</h4>
-              <form onSubmit={handleAssignSubject} style={{ display: 'flex', gap: '0.5rem', marginBottom: '1rem' }}>
+              <form onSubmit={handleAssignSubject} className="btn-group" style={{ marginBottom: '1rem' }}>
                 <select
                   className="form-input"
                   value={assignSubjectId}
                   onChange={(e) => setAssignSubjectId(e.target.value)}
+                  style={{ flex: 1, minWidth: '200px' }}
                 >
                   <option value="">-- Choose Subject to Assign --</option>
                   {subjects.map(sub => (
@@ -265,21 +268,23 @@ export default function StreamsPage() {
 
       {streamReport && (
         <div className="form-card" style={{ marginTop: '2rem', borderTop: '4px solid var(--primary-color)' }}>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+          <div className="header-row" style={{ marginBottom: '1.5rem', flexWrap: 'wrap' }}>
             <h3 style={{ margin: 0 }}>Leaderboard: {streamReport.streamName} Stream</h3>
-            <button type="button" className="btn btn-secondary btn-small" onClick={handleExportClassReport}>
-              📥 Download Class PDF Report
-            </button>
+            <div className="btn-group">
+              <button type="button" className="btn btn-secondary btn-small" onClick={handleExportClassReport}>
+                📥 Download Class PDF Report
+              </button>
+            </div>
           </div>
-          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.5rem', flexWrap: 'wrap', gap: '1rem' }}>
+          <div className="header-row" style={{ marginBottom: '1.5rem', flexWrap: 'wrap' }}>
             <p style={{ color: 'var(--text-secondary)', margin: 0 }}>
               Averages are calculated as: <strong>Total Marks / Number of Stream-assigned subjects ({streamDetails?.subjects?.length ?? 0})</strong>.
             </p>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-              <label className="form-label" style={{ margin: 0, whiteSpace: 'nowrap', fontWeight: '500' }}>Rank By:</label>
+            <div className="btn-group">
+              <label className="form-label" style={{ margin: 0, whiteSpace: 'nowrap', fontWeight: '500', display: 'flex', alignItems: 'center' }}>Rank By:</label>
               <select
                 className="form-input"
-                style={{ padding: '0.35rem 2rem 0.35rem 0.75rem', width: 'auto', margin: 0, height: '38px', borderRadius: '6px' }}
+                style={{ padding: '0.35rem 2rem 0.35rem 0.75rem', width: 'auto', margin: 0, height: '38px', borderRadius: '4px' }}
                 value={leaderboardSubjectId}
                 onChange={(e) => {
                   const subId = e.target.value;
@@ -324,9 +329,9 @@ export default function StreamsPage() {
                       <span className={`badge-grade badge-${st.grade.toLowerCase()}`}>{st.grade}</span>
                     </td>
                     <td style={{ fontSize: '0.85rem' }}>
-                      <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                      <div className="btn-group" style={{ justifyContent: 'flex-start' }}>
                         {st.subjectScores.map(ss => (
-                          <span key={ss.subjectId} style={{ background: 'rgba(255,255,255,0.05)', padding: '0.2rem 0.4rem', borderRadius: '4px', border: '1px solid var(--border-color)' }}>
+                          <span key={ss.subjectId} style={{ background: '#F1F5F9', padding: '0.25rem 0.5rem', borderRadius: '4px', border: '1px solid var(--border-color)', fontSize: '0.8125rem' }}>
                             <strong>{ss.subjectCode}</strong>: {ss.totalScore} ({formatRank(ss.subjectPosition)})
                           </span>
                         ))}

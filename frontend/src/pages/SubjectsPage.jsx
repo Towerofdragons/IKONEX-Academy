@@ -84,8 +84,8 @@ export default function SubjectsPage() {
                 required
               />
             </div>
-            <div style={{ display: 'flex', gap: '0.5rem' }}>
-              <button type="submit" className="btn btn-primary" style={{ flex: 1 }}>
+            <div className="btn-group">
+              <button type="submit" className="btn btn-primary">
                 {subjectForm.id ? 'Save Updates' : 'Create Subject'}
               </button>
               {subjectForm.id && (
@@ -116,15 +116,16 @@ export default function SubjectsPage() {
                     <td><code>{sub.code}</code></td>
                     <td style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{sub.id}</td>
                     <td style={{ textAlign: 'right' }}>
-                      <button
-                        type="button"
-                        className="btn btn-secondary btn-small"
-                        style={{ marginRight: '0.5rem' }}
-                        onClick={() => setSubjectForm({ name: sub.name, code: sub.code, id: sub.id })}
-                      >
-                        Edit
-                      </button>
-                      <button type="button" className="btn btn-danger btn-small" onClick={() => handleSubjectDelete(sub.id)}>Delete</button>
+                      <div className="btn-group" style={{ justifyContent: 'flex-end' }}>
+                        <button
+                          type="button"
+                          className="btn btn-secondary btn-small"
+                          onClick={() => setSubjectForm({ name: sub.name, code: sub.code, id: sub.id })}
+                        >
+                          Edit
+                        </button>
+                        <button type="button" className="btn btn-danger btn-small" onClick={() => handleSubjectDelete(sub.id)}>Delete</button>
+                      </div>
                     </td>
                   </tr>
                 ))}
