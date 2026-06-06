@@ -25,11 +25,14 @@ namespace IKONEX_Academy.Tests
             var options = CreateNewContextOptions();
             var studentId = Guid.NewGuid();
             var subjectId = Guid.NewGuid();
+            var streamId = Guid.NewGuid();
 
             using (var context = new IkonexDbContext(options))
             {
-                context.Students.Add(new Student { Id = studentId, Name = "Test Student", RegNumber = "REG-001" });
+                context.Streams.Add(new Entities.Stream { Id = streamId, Name = "Form 1A" });
+                context.Students.Add(new Student { Id = studentId, Name = "Test Student", RegNumber = "REG-001", StreamId = streamId });
                 context.Subjects.Add(new Subject { Id = subjectId, Name = "Test Subject", Code = "SUB-001" });
+                context.StreamSubjects.Add(new StreamSubject { StreamId = streamId, SubjectId = subjectId });
                 await context.SaveChangesAsync();
             }
 
@@ -71,6 +74,16 @@ namespace IKONEX_Academy.Tests
             var options = CreateNewContextOptions();
             var studentId = Guid.NewGuid();
             var subjectId = Guid.NewGuid();
+            var streamId = Guid.NewGuid();
+
+            using (var context = new IkonexDbContext(options))
+            {
+                context.Streams.Add(new Entities.Stream { Id = streamId, Name = "Form 1A" });
+                context.Students.Add(new Student { Id = studentId, Name = "Test Student", RegNumber = "REG-001", StreamId = streamId });
+                context.Subjects.Add(new Subject { Id = subjectId, Name = "Test Subject", Code = "SUB-001" });
+                context.StreamSubjects.Add(new StreamSubject { StreamId = streamId, SubjectId = subjectId });
+                await context.SaveChangesAsync();
+            }
 
             using (var context = new IkonexDbContext(options))
             {
@@ -98,6 +111,16 @@ namespace IKONEX_Academy.Tests
             var options = CreateNewContextOptions();
             var studentId = Guid.NewGuid();
             var subjectId = Guid.NewGuid();
+            var streamId = Guid.NewGuid();
+
+            using (var context = new IkonexDbContext(options))
+            {
+                context.Streams.Add(new Entities.Stream { Id = streamId, Name = "Form 1A" });
+                context.Students.Add(new Student { Id = studentId, Name = "Test Student", RegNumber = "REG-001", StreamId = streamId });
+                context.Subjects.Add(new Subject { Id = subjectId, Name = "Test Subject", Code = "SUB-001" });
+                context.StreamSubjects.Add(new StreamSubject { StreamId = streamId, SubjectId = subjectId });
+                await context.SaveChangesAsync();
+            }
 
             using (var context = new IkonexDbContext(options))
             {
@@ -123,11 +146,14 @@ namespace IKONEX_Academy.Tests
             var options = CreateNewContextOptions();
             var studentId = Guid.NewGuid();
             var subjectId = Guid.NewGuid();
+            var streamId = Guid.NewGuid();
 
             using (var context = new IkonexDbContext(options))
             {
-                context.Students.Add(new Student { Id = studentId, Name = "Test Student", RegNumber = "REG-001" });
+                context.Streams.Add(new Entities.Stream { Id = streamId, Name = "Form 1A" });
+                context.Students.Add(new Student { Id = studentId, Name = "Test Student", RegNumber = "REG-001", StreamId = streamId });
                 context.Subjects.Add(new Subject { Id = subjectId, Name = "Test Subject", Code = "SUB-001" });
+                context.StreamSubjects.Add(new StreamSubject { StreamId = streamId, SubjectId = subjectId });
                 context.Scores.Add(new Score { Id = Guid.NewGuid(), StudentId = studentId, SubjectId = subjectId, ExamScore = 40, CAScore = 20, TotalScore = 60 });
                 await context.SaveChangesAsync();
             }
@@ -146,6 +172,45 @@ namespace IKONEX_Academy.Tests
 
                 var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RecordScoreAsync(dto));
                 Assert.Contains("Duplicate score submission prohibited", ex.Message);
+            }
+        }
+
+        [Fact]
+        public async Task RecordScore_SubjectNotOfferedInStream_ThrowsInvalidOperationException()
+        {
+            // Arrange
+            var options = CreateNewContextOptions();
+            var studentId = Guid.NewGuid();
+            var subjectId = Guid.NewGuid();
+            var studentStreamId = Guid.NewGuid();
+            var otherStreamId = Guid.NewGuid();
+
+            using (var context = new IkonexDbContext(options))
+            {
+                context.Streams.Add(new Entities.Stream { Id = studentStreamId, Name = "Form 1A" });
+                context.Streams.Add(new Entities.Stream { Id = otherStreamId, Name = "Form 1B" });
+                context.Students.Add(new Student { Id = studentId, Name = "Test Student", RegNumber = "REG-001", StreamId = studentStreamId });
+                context.Subjects.Add(new Subject { Id = subjectId, Name = "Test Subject", Code = "SUB-001" });
+                
+                // Only assign subject to Form 1B (otherStreamId)
+                context.StreamSubjects.Add(new StreamSubject { StreamId = otherStreamId, SubjectId = subjectId });
+                await context.SaveChangesAsync();
+            }
+
+            // Act & Assert
+            using (var context = new IkonexDbContext(options))
+            {
+                var service = new ScoreService(context);
+                var dto = new RecordScoreDto
+                {
+                    StudentId = studentId,
+                    SubjectId = subjectId,
+                    ExamScore = 50.0,
+                    CAScore = 20.0
+                };
+
+                var ex = await Assert.ThrowsAsync<InvalidOperationException>(() => service.RecordScoreAsync(dto));
+                Assert.Contains("This subject is not offered by the student's class stream", ex.Message);
             }
         }
     }

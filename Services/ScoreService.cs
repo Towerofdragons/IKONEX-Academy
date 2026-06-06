@@ -48,6 +48,12 @@ namespace IKONEX_Academy.Services
                 throw new InvalidOperationException("Duplicate score submission prohibited");
             }
 
+            var isSubjectInStream = await _context.StreamSubjects.AnyAsync(ss => ss.StreamId == student.StreamId && ss.SubjectId == dto.SubjectId);
+            if (!isSubjectInStream)
+            {
+                throw new InvalidOperationException("This subject is not offered by the student's class stream");
+            }
+
             var score = new Score
             {
                 Id = Guid.NewGuid(),
