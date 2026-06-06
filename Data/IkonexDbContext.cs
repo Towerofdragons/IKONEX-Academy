@@ -15,10 +15,29 @@ namespace IKONEX_Academy.Data
         public DbSet<Subject> Subjects => Set<Subject>();
         public DbSet<StreamSubject> StreamSubjects => Set<StreamSubject>();
         public DbSet<Score> Scores => Set<Score>();
+        public DbSet<Admin> Admins => Set<Admin>();
+        public DbSet<AuditLog> AuditLogs => Set<AuditLog>();
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // Admin configurations
+            modelBuilder.Entity<Admin>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.HasIndex(e => e.Username).IsUnique();
+                entity.Property(e => e.Username).IsRequired().HasMaxLength(150);
+                entity.Property(e => e.PasswordHash).IsRequired();
+            });
+
+            // AuditLog configurations
+            modelBuilder.Entity<AuditLog>(entity =>
+            {
+                entity.HasKey(e => e.Id);
+                entity.Property(e => e.AdminUsername).IsRequired().HasMaxLength(150);
+                entity.Property(e => e.Action).IsRequired();
+            });
 
             // Stream configurations
             modelBuilder.Entity<Stream>(entity =>

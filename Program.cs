@@ -3,6 +3,12 @@ using IKONEX_Academy.Data;
 using IKONEX_Academy.Middleware;
 using IKONEX_Academy.Services;
 using System.IO;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.IdentityModel.Tokens;
+using System.Text;
+using IKONEX_Academy.Entities;
+using Microsoft.OpenApi;
+
 
 // Load environment variables from .env file if it exists in the project root
 var envPath = Path.Combine(Directory.GetCurrentDirectory(), ".env");
@@ -38,6 +44,30 @@ builder.Services.AddControllers();
 // Register Custom Services
 builder.Services.AddScoped<IReportService, ReportService>();
 builder.Services.AddScoped<IScoreService, ScoreService>();
+builder.Services.AddSingleton<IPasswordHasher, PasswordHasher>();
+
+// Configure JWT Authentication
+var jwtSecret = Environment.GetEnvironmentVariable("JWT_SECRET") ?? "YourSuperSecretKeyForIkonexAcademy2026!KeepItSecure";
+var jwtSigningKey = Encoding.UTF8.GetBytes(jwtSecret);
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+})
+.AddJwtBearer(options =>
+{
+    options.RequireHttpsMetadata = false;
+    options.SaveToken = true;
+    options.TokenValidationParameters = new TokenValidationParameters
+    {
+        ValidateIssuerSigningKey = true,
+        IssuerSigningKey = new SymmetricSecurityKey(jwtSigningKey),
+        ValidateIssuer = false,
+        ValidateAudience = false,
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 // Configure EF Core with PostgreSQL
 var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__DefaultConnection");
@@ -110,15 +140,49 @@ builder.Services.AddCors(options =>
 
 // Configure Swagger API documentation
 builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "IKONEX Academy API", Version = "v1" });
+    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+    {
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        Name = "Authorization",
+        In = ParameterLocation.Header,
+        Type = SecuritySchemeType.ApiKey,
+        Scheme = "Bearer"
+    });
+    c.AddSecurityRequirement(doc => new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecuritySchemeReference("Bearer"),
+            new List<string>()
+        }
+    });
+});
 
 var app = builder.Build();
 
-// Automatically apply database migrations on startup for seamless container deployment
+// Automatically apply database migrations on startup for seamless container deployment and seed default admin
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<IkonexDbContext>();
     db.Database.Migrate();
+
+    if (!db.Admins.Any())
+    {
+        var defaultAdminUsername = Environment.GetEnvironmentVariable("DEFAULT_ADMIN_USERNAME") ?? "admin";
+        var defaultAdminPassword = Environment.GetEnvironmentVariable("DEFAULT_ADMIN_PASSWORD") ?? "Admin123!";
+        var passwordHasher = scope.ServiceProvider.GetRequiredService<IPasswordHasher>();
+
+        db.Admins.Add(new Admin
+        {
+            Id = Guid.NewGuid(),
+            Username = defaultAdminUsername,
+            PasswordHash = passwordHasher.HashPassword(defaultAdminPassword),
+            CreatedAt = DateTime.UtcNow
+        });
+        db.SaveChanges();
+    }
 }
 
 // Register Custom Global Exception Handling Middleware FIRST in request pipeline
@@ -138,6 +202,7 @@ app.UseSwaggerUI(c =>
 
 app.UseHttpsRedirection();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
