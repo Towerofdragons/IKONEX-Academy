@@ -154,37 +154,40 @@ export default function StudentsPage() {
                 <tr>
                   <th>Name</th>
                   <th>Reg Number</th>
-                  <th>Stream ID</th>
+                  <th>Stream</th>
                   <th style={{ textAlign: 'right' }}>Actions</th>
                 </tr>
               </thead>
               <tbody>
-                {students.map(st => (
-                  <tr key={st.id}>
-                    <td><strong>{st.name}</strong></td>
-                    <td><code>{st.regNumber}</code></td>
-                    <td style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{st.streamId}</td>
-                    <td style={{ textAlign: 'right' }}>
-                      <div className="btn-group" style={{ justifyContent: 'flex-end' }}>
-                        <button
-                          type="button"
-                          className="btn btn-primary btn-small"
-                          onClick={() => handleViewStudentProfile(st.id)}
-                        >
-                          Profile
-                        </button>
-                        <button
-                          type="button"
-                          className="btn btn-secondary btn-small"
-                          onClick={() => setStudentForm({ name: st.name, regNumber: st.regNumber, streamId: st.streamId, id: st.id })}
-                        >
-                          Edit
-                        </button>
-                        <button type="button" className="btn btn-danger btn-small" onClick={() => handleStudentDelete(st.id)}>Delete</button>
-                      </div>
-                    </td>
-                  </tr>
-                ))}
+                {students.map(st => {
+                  const stream = streams.find(s => s.id === st.streamId);
+                  return (
+                    <tr key={st.id}>
+                      <td><strong>{st.name}</strong></td>
+                      <td><code>{st.regNumber}</code></td>
+                      <td style={{ color: 'var(--text-secondary)', fontSize: '0.85rem' }}>{stream ? stream.name : st.streamId}</td>
+                      <td style={{ textAlign: 'right' }}>
+                        <div className="btn-group" style={{ justifyContent: 'flex-end' }}>
+                          <button
+                            type="button"
+                            className="btn btn-primary btn-small"
+                            onClick={() => handleViewStudentProfile(st.id)}
+                          >
+                            Profile
+                          </button>
+                          <button
+                            type="button"
+                            className="btn btn-secondary btn-small"
+                            onClick={() => setStudentForm({ name: st.name, regNumber: st.regNumber, streamId: st.streamId, id: st.id })}
+                          >
+                            Edit
+                          </button>
+                          <button type="button" className="btn btn-danger btn-small" onClick={() => handleStudentDelete(st.id)}>Delete</button>
+                        </div>
+                      </td>
+                    </tr>
+                  );
+                })}
               </tbody>
             </table>
           </div>

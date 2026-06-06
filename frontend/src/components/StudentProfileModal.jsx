@@ -107,7 +107,7 @@ export default function StudentProfileModal({ studentDetail, onClose }) {
 
         <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '0.75rem', marginTop: '1.5rem', borderTop: '1px solid var(--border-color)', paddingTop: '1rem' }}>
           <button type="button" className="btn btn-primary" onClick={handleExport}>
-            📥 Download PDF Report Card
+            Download PDF Report Card
           </button>
           <button type="button" className="btn btn-secondary" onClick={onClose}>Close</button>
         </div>

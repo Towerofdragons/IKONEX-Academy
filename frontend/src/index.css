@@ -176,7 +176,6 @@ body {
   align-items: center;
   justify-content: center;
   color: var(--primary-color);
-  font-size: 1.25rem;
 }
 
 .stat-info h4 {
@@ -247,6 +246,10 @@ body {
   cursor: pointer;
   transition: background-color 0.15s ease;
   border: none;
+}
+
+.btn svg {
+  flex-shrink: 0;
 }
 
 .btn-primary {

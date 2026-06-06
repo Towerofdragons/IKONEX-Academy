@@ -5,6 +5,7 @@ import { useApp } from '../hooks/useApp';
 import { parseErrorMessage } from '../utils/errors';
 import { formatRank, rankBadgeClass } from '../utils/formatters';
 import { exportClassPerformanceReport } from '../utils/pdf';
+import { BarChart3, Download } from 'lucide-react';
 
 export default function StreamsPage() {
   const { authFetch } = useAuth();
@@ -186,7 +187,8 @@ export default function StreamsPage() {
             <h3 style={{ margin: 0 }}>Stream Details: {streamDetails.name}</h3>
             <div className="btn-group">
               <button type="button" className="btn btn-primary" onClick={() => loadStreamReport(selectedStream)}>
-                📊 Process Leaderboard Report
+                <BarChart3 size={16} style={{ marginRight: '0.5rem' }} />
+                Process Leaderboard Report
               </button>
             </div>
           </div>
@@ -272,7 +274,8 @@ export default function StreamsPage() {
             <h3 style={{ margin: 0 }}>Leaderboard: {streamReport.streamName} Stream</h3>
             <div className="btn-group">
               <button type="button" className="btn btn-secondary btn-small" onClick={handleExportClassReport}>
-                📥 Download Class PDF Report
+                <Download size={14} style={{ marginRight: '0.5rem' }} />
+                Download Class PDF Report
               </button>
             </div>
           </div>
