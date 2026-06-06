@@ -43,7 +43,7 @@ npm run dev
 - **Stream Management** - Create class streams and assign subjects
 - **Student Registration** - Enroll students with unique registration numbers
 - **Subject Management** - Configure syllabus subjects with codes
-- **Assessment Scoring** - Record CA (0-30) and Exam (0-70) scores
+- **Assessment Scoring** - Record Continuous Assessment (0-30) and Exam (0-70) scores
 - **Leaderboard Generation** - Automatic class rankings with competition ranking (1224 rule)
 - **PDF Reports** - Export individual student report cards and class performance PDFs
 - **Admin Management** - Register additional administrator accounts
