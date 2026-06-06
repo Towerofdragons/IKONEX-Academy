@@ -38,7 +38,7 @@ npm run dev
 - Backend API: `http://localhost:5178/api`
 - Swagger Docs: `http://localhost:5178/swagger`
 
-## 📋 Features
+## Features
 
 - **Stream Management** - Create class streams and assign subjects
 - **Student Registration** - Enroll students with unique registration numbers
@@ -49,7 +49,7 @@ npm run dev
 - **Admin Management** - Register additional administrator accounts
 - **Audit Logging** - All write actions are logged for accountability
 
-## 🏗️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |-------|------------|
@@ -59,12 +59,12 @@ npm run dev
 | Icons | Lucide React |
 | PDF Generation | jsPDF + AutoTable |
 
-## 📖 Documentation
+## Documentation
 
 - **[User Guide](USER_GUIDE.md)** - Comprehensive setup, deployment, and usage instructions
 - **[Backend Documentation](backend.md)** - Technical architecture, API endpoints, and database schema
 
-## 🌐 Deployment
+## Deployment
 
 ### Render Deployment
 
@@ -73,14 +73,13 @@ The application is cloud-ready for [Render](https://render.com) deployment:
 1. **PostgreSQL** - Create a PostgreSQL instance on Render
 2. **Backend** - Deploy as a Web Service with environment variables:
    - `DATABASE_URL` - From Render Postgres
-   - `JWT_SECRET` - Strong random secret
    - `ALLOWED_CORS_ORIGINS` - Frontend URL
 3. **Frontend** - Deploy as a Static Site with:
    - `VITE_API_BASE_URL` - Backend URL
 
 See [USER_GUIDE.md](USER_GUIDE.md) for detailed deployment instructions.
 
-## 🔐 Security
+## Security
 
 - JWT authentication with 24-hour token expiration
 - CORS configuration for cross-origin requests
@@ -88,7 +87,7 @@ See [USER_GUIDE.md](USER_GUIDE.md) for detailed deployment instructions.
 - Audit logging for all write operations
 - Environment variable configuration for secrets
 
-## 📊 Grading Scale
+## Grading Scale
 
 | Average | Grade |
 |---------|-------|
@@ -98,7 +97,7 @@ See [USER_GUIDE.md](USER_GUIDE.md) for detailed deployment instructions.
 | ≥ 50 | D |
 | < 50 | E |
 
-## 🔄 Recommended Workflow
+## Recommended Workflow
 
 1. Create subjects → Subject Deck
 2. Create streams → Stream Manager
@@ -108,7 +107,7 @@ See [USER_GUIDE.md](USER_GUIDE.md) for detailed deployment instructions.
 6. Generate reports → Stream Manager → Process Leaderboard
 7. Export PDFs → Student Profile or Class Leaderboard
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 IKONEX-Academy/
@@ -125,17 +124,14 @@ IKONEX-Academy/
 └── dockerfile       # Container build for backend
 ```
 
-## 🧪 Testing
+## Testing
 
 Run the Render deployment test script:
 ```powershell
 .\test_render.ps1 -RenderUrl "https://your-backend.onrender.com"
 ```
 
-## 📝 License
 
-This project is part of the IKONEX Academy Student Management System.
-
-## 🤝 Support
+## Support
 
 For detailed troubleshooting and API documentation, see [USER_GUIDE.md](USER_GUIDE.md).
