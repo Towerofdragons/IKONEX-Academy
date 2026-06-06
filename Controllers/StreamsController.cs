@@ -10,10 +10,14 @@ using IKONEX_Academy.DTOs.Stream;
 using IKONEX_Academy.DTOs.Student;
 using IKONEX_Academy.DTOs.Subject;
 
+using Microsoft.AspNetCore.Authorization;
+using Serilog;
+
 namespace IKONEX_Academy.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class StreamsController : ControllerBase
     {
         private readonly IkonexDbContext _context;
@@ -39,6 +43,20 @@ namespace IKONEX_Academy.Controllers
 
             _context.Streams.Add(stream);
             await _context.SaveChangesAsync();
+
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Created stream '{stream.Name}'",
+                EntityId = stream.Id.ToString(),
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' created stream '{StreamName}' (Id: {StreamId})", adminUsername, stream.Name, stream.Id);
 
             var result = new StreamDto
             {

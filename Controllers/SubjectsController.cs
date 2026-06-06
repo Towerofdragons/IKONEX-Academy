@@ -7,10 +7,14 @@ using IKONEX_Academy.Data;
 using IKONEX_Academy.Entities;
 using IKONEX_Academy.DTOs.Subject;
 
+using Microsoft.AspNetCore.Authorization;
+using Serilog;
+
 namespace IKONEX_Academy.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class SubjectsController : ControllerBase
     {
         private readonly IkonexDbContext _context;
@@ -43,6 +47,20 @@ namespace IKONEX_Academy.Controllers
 
             _context.Subjects.Add(subject);
             await _context.SaveChangesAsync();
+
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Created subject '{subject.Name}' ({subject.Code})",
+                EntityId = subject.Id.ToString(),
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' created subject '{SubjectName}' ({SubjectCode}, Id: {SubjectId})", adminUsername, subject.Name, subject.Code, subject.Id);
 
             var result = new SubjectDto
             {
@@ -97,6 +115,20 @@ namespace IKONEX_Academy.Controllers
 
             await _context.SaveChangesAsync();
 
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Updated subject '{subject.Name}' ({subject.Code})",
+                EntityId = subject.Id.ToString(),
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' updated subject '{SubjectName}' ({SubjectCode}, Id: {SubjectId})", adminUsername, subject.Name, subject.Code, subject.Id);
+
             var result = new SubjectDto
             {
                 Id = subject.Id,
@@ -118,6 +150,20 @@ namespace IKONEX_Academy.Controllers
 
             _context.Subjects.Remove(subject);
             await _context.SaveChangesAsync();
+
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Deleted subject '{subject.Name}' ({subject.Code})",
+                EntityId = subject.Id.ToString(),
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' deleted subject '{SubjectName}' ({SubjectCode}, Id: {SubjectId})", adminUsername, subject.Name, subject.Code, subject.Id);
 
             return NoContent();
         }
@@ -156,6 +202,20 @@ namespace IKONEX_Academy.Controllers
             _context.StreamSubjects.Add(streamSubject);
             await _context.SaveChangesAsync();
 
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Assigned subject ID '{subjectId}' to stream ID '{streamId}'",
+                EntityId = $"{streamId}_{subjectId}",
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' assigned subject '{SubjectId}' to stream '{StreamId}'", adminUsername, subjectId, streamId);
+
             return Ok(new { message = "Subject assigned to stream successfully" });
         }
 
@@ -172,6 +232,20 @@ namespace IKONEX_Academy.Controllers
 
             _context.StreamSubjects.Remove(streamSubject);
             await _context.SaveChangesAsync();
+
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Unassigned subject ID '{subjectId}' from stream ID '{streamId}'",
+                EntityId = $"{streamId}_{subjectId}",
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' unassigned subject '{SubjectId}' from stream '{StreamId}'", adminUsername, subjectId, streamId);
 
             return NoContent();
         }

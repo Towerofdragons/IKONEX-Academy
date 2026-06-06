@@ -8,10 +8,14 @@ using IKONEX_Academy.Entities;
 using IKONEX_Academy.DTOs.Student;
 using IKONEX_Academy.DTOs.Score;
 
+using Microsoft.AspNetCore.Authorization;
+using Serilog;
+
 namespace IKONEX_Academy.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
+    [Authorize]
     public class StudentsController : ControllerBase
     {
         private readonly IkonexDbContext _context;
@@ -45,6 +49,20 @@ namespace IKONEX_Academy.Controllers
 
             _context.Students.Add(student);
             await _context.SaveChangesAsync();
+
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Registered student '{student.Name}' with RegNumber '{student.RegNumber}'",
+                EntityId = student.Id.ToString(),
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' registered student '{StudentName}' (RegNumber: {RegNumber}, StudentId: {StudentId})", adminUsername, student.Name, student.RegNumber, student.Id);
 
             var result = new StudentDto
             {
@@ -83,6 +101,20 @@ namespace IKONEX_Academy.Controllers
 
             await _context.SaveChangesAsync();
 
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Updated student '{student.Name}' (RegNumber: {student.RegNumber})",
+                EntityId = student.Id.ToString(),
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' updated student '{StudentName}' (RegNumber: {RegNumber}, StudentId: {StudentId})", adminUsername, student.Name, student.RegNumber, student.Id);
+
             var result = new StudentDto
             {
                 Id = student.Id,
@@ -105,6 +137,20 @@ namespace IKONEX_Academy.Controllers
 
             _context.Students.Remove(student);
             await _context.SaveChangesAsync();
+
+            var adminUsername = User.Identity?.Name ?? "system";
+            var auditLog = new AuditLog
+            {
+                Id = Guid.NewGuid(),
+                AdminUsername = adminUsername,
+                Action = $"Deleted student '{student.Name}' (RegNumber: {student.RegNumber})",
+                EntityId = student.Id.ToString(),
+                Timestamp = DateTime.UtcNow
+            };
+            _context.AuditLogs.Add(auditLog);
+            await _context.SaveChangesAsync();
+
+            Log.Information("Admin '{AdminUsername}' deleted student '{StudentName}' (RegNumber: {RegNumber}, StudentId: {StudentId})", adminUsername, student.Name, student.RegNumber, student.Id);
 
             return NoContent();
         }
