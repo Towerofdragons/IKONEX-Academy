@@ -6,9 +6,9 @@ const NAV_ITEMS = [
   { to: '/', label: 'Dashboard', end: true },
   { to: '/streams', label: 'Stream Manager' },
   { to: '/students', label: 'Student Roster' },
-  { to: '/subjects', label: 'Subject Deck' },
+  { to: '/subjects', label: 'Subject Manager' },
   { to: '/scores', label: 'Scoring Board' },
-  { to: '/admin', label: 'Admin Deck' },
+  { to: '/admin', label: 'Admin' },
 ];
 
 export default function Sidebar() {
@@ -26,9 +26,9 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="brand-section">
-        <div className="brand-logo">I</div>
-        <h1 className="brand-name">Ikonex Academy</h1>
+        <div className="brand-logo">Ikonex Academy</div>
       </div>
+      <div></div>
       <nav>
         <ul className="nav-links">
           {NAV_ITEMS.map(({ to, label, end }) => (
