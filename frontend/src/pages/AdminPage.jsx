@@ -75,20 +75,6 @@ export default function AdminPage() {
           </form>
         </div>
 
-        <div className="form-card" style={{ gridColumn: 'span 2' }}>
-          <h3>Security & Auditing Guidelines</h3>
-          <div style={{ marginTop: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6', fontSize: '0.95rem' }}>
-            <p style={{ marginBottom: '1rem' }}>
-              Welcome to the administrative control panel. Please ensure all modifications conform to school policies.
-            </p>
-            <ul style={{ paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
-              <li>All write actions (creating, editing, and deleting streams, students, subjects, and scores) are logged to the database audit logs.</li>
-              <li>Audit logs map the administrator&apos;s name, action timestamp, entity ID, and type.</li>
-              <li>Avoid creating generic accounts. Each administrator must have their own unique credentials.</li>
-              <li>Always use strong passwords containing letters, numbers, and special characters.</li>
-            </ul>
-          </div>
-        </div>
       </div>
     </div>
   );
