@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API_BASE } from '../config/api';
 import { useAuth } from '../hooks/useAuth';
 import { useApp } from '../hooks/useApp';
@@ -8,6 +8,9 @@ import { exportClassPerformanceReport } from '../utils/pdf';
 import { BarChart3, Download } from 'lucide-react';
 
 export default function StreamsPage() {
+  useEffect(() => {
+    document.title = 'Stream Manager - IKONEX Academy';
+  }, []);
   const { authFetch } = useAuth();
   const { streams, subjects, fetchBaselineData, setLoading, showToast } = useApp();
 
@@ -129,7 +132,7 @@ export default function StreamsPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Manage Class Streams</h2>
+        <h2 className="page-title">Stream Manager</h2>
       </div>
 
       <div className="card-grid">

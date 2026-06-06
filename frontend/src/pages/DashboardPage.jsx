@@ -1,13 +1,18 @@
+import { useEffect } from 'react';
 import { useApp } from '../hooks/useApp';
 import { Building2, GraduationCap, BookOpen } from 'lucide-react';
 
 export default function DashboardPage() {
   const { streams, students, subjects, fetchBaselineData } = useApp();
 
+  useEffect(() => {
+    document.title = 'Dashboard - IKONEX Academy';
+  }, []);
+
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Operational Dashboard</h2>
+        <h2 className="page-title">Dashboard</h2>
         <div className="btn-group">
           <button type="button" className="btn btn-secondary" onClick={fetchBaselineData}>Refresh Stats</button>
         </div>

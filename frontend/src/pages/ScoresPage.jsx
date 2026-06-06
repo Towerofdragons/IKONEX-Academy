@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API_BASE } from '../config/api';
 import { useAuth } from '../hooks/useAuth';
 import { useApp } from '../hooks/useApp';
@@ -7,6 +7,9 @@ import { parseErrorMessage } from '../utils/errors';
 const EMPTY_SCORE_FORM = { studentId: '', subjectId: '', examScore: '', caScore: '', id: null };
 
 export default function ScoresPage() {
+  useEffect(() => {
+    document.title = 'Scoring Board - IKONEX Academy';
+  }, []);
   const { authFetch } = useAuth();
   const { students, subjects, fetchBaselineData, setLoading, showToast } = useApp();
   const [scoreForm, setScoreForm] = useState(EMPTY_SCORE_FORM);
@@ -79,7 +82,7 @@ export default function ScoresPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Student Scoring Deck</h2>
+        <h2 className="page-title">Scoring Board</h2>
       </div>
 
       <div className="card-grid">

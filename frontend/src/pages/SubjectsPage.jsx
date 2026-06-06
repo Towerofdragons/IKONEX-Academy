@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API_BASE } from '../config/api';
 import { useAuth } from '../hooks/useAuth';
 import { useApp } from '../hooks/useApp';
@@ -7,6 +7,9 @@ import { parseErrorMessage } from '../utils/errors';
 const EMPTY_SUBJECT_FORM = { name: '', code: '', id: null };
 
 export default function SubjectsPage() {
+  useEffect(() => {
+    document.title = 'Subject Manager - IKONEX Academy';
+  }, []);
   const { authFetch } = useAuth();
   const { subjects, fetchBaselineData, showToast } = useApp();
   const [subjectForm, setSubjectForm] = useState(EMPTY_SUBJECT_FORM);
@@ -55,7 +58,7 @@ export default function SubjectsPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Syllabus Subject Registry</h2>
+        <h2 className="page-title">Subject Manager</h2>
       </div>
 
       <div className="card-grid">

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Navigate, useNavigate } from 'react-router-dom';
 import { useAuth } from '../hooks/useAuth';
 import { useApp } from '../hooks/useApp';
@@ -10,6 +10,10 @@ export default function LoginPage() {
   const navigate = useNavigate();
   const [loginForm, setLoginForm] = useState({ username: '', password: '' });
   const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    document.title = 'Login - IKONEX Academy';
+  }, []);
 
   if (isAuthenticated) {
     return <Navigate to="/" replace />;

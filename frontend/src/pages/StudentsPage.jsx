@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API_BASE } from '../config/api';
 import { useAuth } from '../hooks/useAuth';
 import { useApp } from '../hooks/useApp';
@@ -8,6 +8,9 @@ import StudentProfileModal from '../components/StudentProfileModal';
 const EMPTY_STUDENT_FORM = { name: '', regNumber: '', streamId: '', id: null };
 
 export default function StudentsPage() {
+  useEffect(() => {
+    document.title = 'Student Roster - IKONEX Academy';
+  }, []);
   const { authFetch } = useAuth();
   const { streams, students, fetchBaselineData, setLoading, showToast } = useApp();
   const [studentForm, setStudentForm] = useState(EMPTY_STUDENT_FORM);
@@ -90,7 +93,7 @@ export default function StudentsPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Student Registration & Roster</h2>
+        <h2 className="page-title">Student Roster</h2>
       </div>
 
       <div className="card-grid">

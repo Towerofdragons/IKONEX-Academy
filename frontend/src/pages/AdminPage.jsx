@@ -1,10 +1,13 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { API_BASE } from '../config/api';
 import { useAuth } from '../hooks/useAuth';
 import { useApp } from '../hooks/useApp';
 import { parseErrorMessage } from '../utils/errors';
 
 export default function AdminPage() {
+  useEffect(() => {
+    document.title = 'Admin - IKONEX Academy';
+  }, []);
   const { authFetch } = useAuth();
   const { loading, setLoading, showToast } = useApp();
   const [inviteForm, setInviteForm] = useState({ username: '', password: '' });
@@ -37,7 +40,7 @@ export default function AdminPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Admin Management Deck</h2>
+        <h2 className="page-title">Admin</h2>
       </div>
 
       <div className="card-grid">
