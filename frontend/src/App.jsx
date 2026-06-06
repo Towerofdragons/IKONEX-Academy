@@ -8,6 +8,12 @@ function App() {
   const [students, setStudents] = useState([]);
   const [subjects, setSubjects] = useState([]);
   
+  // Security state
+  const [token, setToken] = useState(localStorage.getItem('ikonex_admin_token') || '');
+  const [adminUser, setAdminUser] = useState(localStorage.getItem('ikonex_admin_username') || '');
+  const [loginForm, setLoginForm] = useState({ username: '', password: '' });
+  const [inviteForm, setInviteForm] = useState({ username: '', password: '' });
+
   // Selection / Detail states
   const [selectedStream, setSelectedStream] = useState(null);
   const [streamDetails, setStreamDetails] = useState(null);
@@ -28,10 +34,23 @@ function App() {
   const [backendStatus, setBackendStatus] = useState(true); // check if API is alive
   const [loading, setLoading] = useState(false);
 
-  // Load baseline data on startup
+  // Authenticated fetch wrapper
+  const authFetch = async (url, options = {}) => {
+    const headers = {
+      ...options.headers,
+    };
+    if (token) {
+      headers['Authorization'] = `Bearer ${token}`;
+    }
+    return fetch(url, { ...options, headers });
+  };
+
+  // Load baseline data on startup / authentication
   useEffect(() => {
-    fetchBaselineData();
-  }, []);
+    if (token) {
+      fetchBaselineData();
+    }
+  }, [token]);
 
   const showToast = (message, type = 'success') => {
     setToast({ message, type });
@@ -59,9 +78,9 @@ function App() {
   const fetchBaselineData = async () => {
     setLoading(true);
     try {
-      const sRes = await fetch(`${API_BASE}/streams`);
-      const stRes = await fetch(`${API_BASE}/students`);
-      const subRes = await fetch(`${API_BASE}/subjects`);
+      const sRes = await authFetch(`${API_BASE}/streams`);
+      const stRes = await authFetch(`${API_BASE}/students`);
+      const subRes = await authFetch(`${API_BASE}/subjects`);
 
       if (sRes.ok && stRes.ok && subRes.ok) {
         setStreams(await sRes.json());
@@ -80,6 +99,68 @@ function App() {
   };
 
   // ----------------------------------------------------
+  // SECURITY & SESSION ACTIONS
+  // ----------------------------------------------------
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    if (!loginForm.username.trim() || !loginForm.password) return;
+    setLoading(true);
+    try {
+      const res = await fetch(`${API_BASE}/auth/login`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(loginForm)
+      });
+      const data = await res.json();
+      if (res.ok) {
+        setToken(data.token);
+        setAdminUser(data.username);
+        localStorage.setItem('ikonex_admin_token', data.token);
+        localStorage.setItem('ikonex_admin_username', data.username);
+        showToast(`Welcome back, ${data.username}!`);
+      } else {
+        showToast(parseErrorMessage(data, 'Invalid credentials'), 'danger');
+      }
+    } catch (err) {
+      showToast('API Connection Error', 'danger');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const handleLogout = () => {
+    setToken('');
+    setAdminUser('');
+    localStorage.removeItem('ikonex_admin_token');
+    localStorage.removeItem('ikonex_admin_username');
+    showToast('Logged out successfully.');
+  };
+
+  const handleInviteAdmin = async (e) => {
+    e.preventDefault();
+    if (!inviteForm.username.trim() || !inviteForm.password) return;
+    setLoading(true);
+    try {
+      const res = await authFetch(`${API_BASE}/auth/register`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(inviteForm)
+      });
+      const data = await res.json();
+      if (res.ok) {
+        showToast(`Admin account "${data.username}" successfully registered!`);
+        setInviteForm({ username: '', password: '' });
+      } else {
+        showToast(parseErrorMessage(data, 'Failed to register admin'), 'danger');
+      }
+    } catch (err) {
+      showToast('API Connection Error', 'danger');
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  // ----------------------------------------------------
   // STREAM ACTIONS
   // ----------------------------------------------------
   const handleCreateStream = async (e) => {
@@ -87,7 +168,7 @@ function App() {
     if (!newStreamName.trim()) return;
 
     try {
-      const res = await fetch(`${API_BASE}/streams`, {
+      const res = await authFetch(`${API_BASE}/streams`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ name: newStreamName })
@@ -109,7 +190,7 @@ function App() {
   const loadStreamDetails = async (id) => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/streams/${id}`);
+      const res = await authFetch(`${API_BASE}/streams/${id}`);
       if (res.ok) {
         const details = await res.json();
         setStreamDetails(details);
@@ -133,7 +214,7 @@ function App() {
       const url = subId 
         ? `${API_BASE}/reports/stream/${id}?subjectId=${subId}` 
         : `${API_BASE}/reports/stream/${id}`;
-      const res = await fetch(url);
+      const res = await authFetch(url);
       if (res.ok) {
         const report = await res.json();
         setStreamReport(report);
@@ -156,7 +237,7 @@ function App() {
     if (!assignSubjectId || !selectedStream) return;
 
     try {
-      const res = await fetch(`${API_BASE}/streams/${selectedStream}/subjects/${assignSubjectId}`, {
+      const res = await authFetch(`${API_BASE}/streams/${selectedStream}/subjects/${assignSubjectId}`, {
         method: 'POST'
       });
       const data = await res.json();
@@ -176,7 +257,7 @@ function App() {
   const handleUnassignSubject = async (subjectId) => {
     if (!confirm('Are you sure you want to unassign this subject? This might affect calculations.')) return;
     try {
-      const res = await fetch(`${API_BASE}/streams/${selectedStream}/subjects/${subjectId}`, {
+      const res = await authFetch(`${API_BASE}/streams/${selectedStream}/subjects/${subjectId}`, {
         method: 'DELETE'
       });
 
@@ -202,7 +283,7 @@ function App() {
     const method = isEdit ? 'PUT' : 'POST';
 
     try {
-      const res = await fetch(url, {
+      const res = await authFetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -228,7 +309,7 @@ function App() {
   const handleStudentDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this student record? This deletes all associated scores.')) return;
     try {
-      const res = await fetch(`${API_BASE}/students/${id}`, { method: 'DELETE' });
+      const res = await authFetch(`${API_BASE}/students/${id}`, { method: 'DELETE' });
       if (res.ok) {
         showToast('Student record deleted successfully.');
         fetchBaselineData();
@@ -251,7 +332,7 @@ function App() {
     const method = isEdit ? 'PUT' : 'POST';
 
     try {
-      const res = await fetch(url, {
+      const res = await authFetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -276,7 +357,7 @@ function App() {
   const handleSubjectDelete = async (id) => {
     if (!confirm('Are you sure you want to delete this subject? It will be removed from all streams and score cards.')) return;
     try {
-      const res = await fetch(`${API_BASE}/subjects/${id}`, { method: 'DELETE' });
+      const res = await authFetch(`${API_BASE}/subjects/${id}`, { method: 'DELETE' });
       if (res.ok) {
         showToast('Subject deleted successfully.');
         fetchBaselineData();
@@ -315,7 +396,7 @@ function App() {
         ? { examScore: exam, caScore: ca }
         : { studentId: scoreForm.studentId, subjectId: scoreForm.subjectId, examScore: exam, caScore: ca };
 
-      const res = await fetch(url, {
+      const res = await authFetch(url, {
         method,
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(payload)
@@ -346,7 +427,7 @@ function App() {
     }
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/students/${studentId}`);
+      const res = await authFetch(`${API_BASE}/students/${studentId}`);
       if (res.ok) {
         const detail = await res.json();
         setSelectedStudentScores(detail);
@@ -362,13 +443,13 @@ function App() {
   const handleViewStudentProfile = async (studentId) => {
     setLoading(true);
     try {
-      const res = await fetch(`${API_BASE}/students/${studentId}`);
+      const res = await authFetch(`${API_BASE}/students/${studentId}`);
       if (res.ok) {
         const detail = await res.json();
         let reportData = null;
         if (detail.streamId) {
           try {
-            const repRes = await fetch(`${API_BASE}/reports/stream/${detail.streamId}`);
+            const repRes = await authFetch(`${API_BASE}/reports/stream/${detail.streamId}`);
             if (repRes.ok) {
               reportData = await repRes.json();
             }
@@ -600,6 +681,52 @@ function App() {
     showToast(`Class Performance PDF generated!`);
   };
 
+  if (!token) {
+    return (
+      <div className="login-overlay">
+        {toast && (
+          <div className={`alert-popup alert-${toast.type}`}>
+            <span>{toast.message}</span>
+          </div>
+        )}
+        <div className="login-card">
+          <div className="login-header">
+            <div className="brand-logo" style={{ margin: '0 auto 1rem auto' }}>I</div>
+            <h2 className="brand-name" style={{ textAlign: 'center', fontSize: '1.75rem', background: 'linear-gradient(to right, #ffffff, #9ca3af)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', fontWeight: '700' }}>Ikonex SMS Admin</h2>
+            <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem', fontSize: '0.9rem' }}>Sign in to access school administration</p>
+          </div>
+          <form onSubmit={handleLogin} style={{ marginTop: '2rem' }}>
+            <div className="form-group">
+              <label className="form-label">Username</label>
+              <input 
+                type="text" 
+                className="form-input" 
+                placeholder="Enter admin username" 
+                value={loginForm.username}
+                onChange={(e) => setLoginForm({ ...loginForm, username: e.target.value })}
+                required
+              />
+            </div>
+            <div className="form-group">
+              <label className="form-label">Password</label>
+              <input 
+                type="password" 
+                className="form-input" 
+                placeholder="Enter password" 
+                value={loginForm.password}
+                onChange={(e) => setLoginForm({ ...loginForm, password: e.target.value })}
+                required
+              />
+            </div>
+            <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1.5rem', height: '46px', fontSize: '1rem' }} disabled={loading}>
+              {loading ? 'Authenticating...' : 'Sign In'}
+            </button>
+          </form>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className="app-container">
       {/* Toast Alert */}
@@ -640,6 +767,16 @@ function App() {
             <li>
               <div onClick={() => setActiveTab('scores')} className={`nav-item ${activeTab === 'scores' ? 'active' : ''}`}>
                 <span>Scoring Board</span>
+              </div>
+            </li>
+            <li>
+              <div onClick={() => setActiveTab('admin')} className={`nav-item ${activeTab === 'admin' ? 'active' : ''}`}>
+                <span>Admin Deck</span>
+              </div>
+            </li>
+            <li style={{ marginTop: '2rem', borderTop: '1px solid var(--border-color)', paddingTop: '1.5rem' }}>
+              <div onClick={handleLogout} className="nav-item" style={{ color: 'var(--danger-color)' }}>
+                <span>Logout ({adminUser})</span>
               </div>
             </li>
           </ul>
@@ -1290,6 +1427,66 @@ function App() {
                       ))}
                     </tbody>
                   </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* ----------------- ADMIN TAB ----------------- */}
+        {activeTab === 'admin' && (
+          <div>
+            <div className="header-row">
+              <h2 className="page-title">Admin Management Deck</h2>
+            </div>
+
+            <div className="card-grid">
+              <div className="form-card">
+                <h3>Invite / Register New Admin</h3>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '1.5rem', marginTop: '0.5rem' }}>
+                  Register a new administrative account. Only authorized administrators can perform this action.
+                </p>
+                <form onSubmit={handleInviteAdmin}>
+                  <div className="form-group">
+                    <label className="form-label">New Username</label>
+                    <input 
+                      type="text" 
+                      className="form-input" 
+                      placeholder="Enter username" 
+                      value={inviteForm.username}
+                      onChange={(e) => setInviteForm({ ...inviteForm, username: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label className="form-label">Temporary Password</label>
+                    <input 
+                      type="password" 
+                      className="form-input" 
+                      placeholder="Enter password" 
+                      value={inviteForm.password}
+                      onChange={(e) => setInviteForm({ ...inviteForm, password: e.target.value })}
+                      required
+                    />
+                  </div>
+                  <button type="submit" className="btn btn-primary" style={{ width: '100%', marginTop: '1.5rem' }} disabled={loading}>
+                    {loading ? 'Creating Account...' : 'Register Admin'}
+                  </button>
+                </form>
+              </div>
+
+              <div className="form-card" style={{ gridColumn: 'span 2' }}>
+                <h3>Security & Auditing Guidelines</h3>
+                <div style={{ marginTop: '1.25rem', color: 'var(--text-secondary)', lineHeight: '1.6', fontSize: '0.95rem' }}>
+                  <p style={{ marginBottom: '1rem' }}>
+                    Welcome to the administrative control panel. Please ensure all modifications conform to school policies.
+                  </p>
+                  <ul style={{ paddingLeft: '1.25rem', display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <li>All write actions (creating, editing, and deleting streams, students, subjects, and scores) are logged to the database audit logs.</li>
+                    <li>Audit logs map the administrator's name, action timestamp, entity ID, and type.</li>
+                    <li>Avoid creating generic accounts. Each administrator must have their own unique credentials.</li>
+                    <li>Always use strong passwords containing letters, numbers, and special characters.</li>
+                  </ul>
                 </div>
               </div>
             </div>
