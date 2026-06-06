@@ -160,6 +160,22 @@ An unhandled exception filter catch-all sits first in the request pipeline. If a
 ### Global CORS Policy
 Configured in `Program.cs` to allow requests from any origin, header, and HTTP method. This permits local React frontends or containerized production services to communicate with the Web API seamlessly.
 
+### Logging
+The application uses Serilog for structured logging:
+
+- **Console Output**: Real-time log messages displayed in the terminal
+- **File Logging**: Logs written to `Logs/ikonex-sms-{date}.log` with daily rotation
+- **Log Levels**: Information, Warning, Error, and Fatal
+- **Output Format**: `[{Timestamp:yyyy-MM-dd HH:mm:ss} {Level:u3}] {Message:lj}{NewLine}{Exception}`
+- **Automatic Startup**: Logging is configured at application startup in `Program.cs`
+- **Error Tracking**: All unhandled exceptions are logged via the Global Exception Handling Middleware
+
+Log files are useful for:
+- Debugging production issues
+- Monitoring application health
+- Tracking user actions and API requests
+- Investigating security incidents
+
 ---
 
 ## 6. How to Run Locally
@@ -185,3 +201,43 @@ Configured in `Program.cs` to allow requests from any origin, header, and HTTP m
    dotnet run
    ```
    The API will listen on `http://localhost:5000` (or the configured `launchSettings.json` profiles) and serve the OpenAPI spec at `/openapi/v1.json`.
+
+---
+
+## 7. Deployment
+
+### Docker Deployment
+
+The backend includes a multi-stage `dockerfile` for containerized deployment:
+
+```dockerfile
+# Build stage
+FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
+WORKDIR /src
+COPY *.csproj ./
+RUN dotnet restore
+COPY . ./
+RUN dotnet publish -c Release -o /app/out
+
+# Runtime stage
+FROM mcr.microsoft.com/dotnet/aspnet:9.0 AS runtime
+WORKDIR /app
+COPY --from=build /app/out .
+EXPOSE 8080
+ENTRYPOINT ["dotnet", "IKONEX-Academy.dll"]
+```
+
+### Render Deployment
+
+> **Important:** Render does not support native .NET/C# deployment. To deploy the .NET 9 backend on Render, you must use a Docker container.
+
+1. Create a PostgreSQL instance on Render
+2. Create a new Web Service with:
+   - Runtime: Docker
+   - Dockerfile Path: `./dockerfile`
+3. Configure environment variables:
+   - `DATABASE_URL` - From Render Postgres
+   - `ALLOWED_CORS_ORIGINS` - Frontend URL
+4. Render automatically injects `PORT` which the application uses for binding
+
+See [USER_GUIDE.md](USER_GUIDE.md) for complete deployment instructions.

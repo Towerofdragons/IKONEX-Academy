@@ -70,10 +70,11 @@ npm run dev
 
 The application is cloud-ready for [Render](https://render.com) deployment:
 
+> **Important:** Render does not support native .NET/C# deployment. The .NET 9 backend must be deployed using a Docker container. A pre-configured `dockerfile` is included in the project.
+
 1. **PostgreSQL** - Create a PostgreSQL instance on Render
-2. **Backend** - Deploy as a Web Service with environment variables:
+2. **Backend** - Deploy as a Docker Web Service with environment variables:
    - `DATABASE_URL` - From Render Postgres
-   - `JWT_SECRET` - Strong random secret
    - `ALLOWED_CORS_ORIGINS` - Frontend URL
 3. **Frontend** - Deploy as a Static Site with:
    - `VITE_API_BASE_URL` - Backend URL

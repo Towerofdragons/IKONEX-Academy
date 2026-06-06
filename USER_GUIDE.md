@@ -46,7 +46,6 @@ DB_DATABASE=IkonexAcademyDb
 DB_USERNAME=postgres
 DB_PASSWORD=yourpassword
 ALLOWED_CORS_ORIGINS=http://localhost:5173
-JWT_SECRET=your-local-secret-key
 ```
 
 Alternatively, edit the connection string in `appsettings.json`:
@@ -105,35 +104,37 @@ npm run dev
 
 The backend is cloud-ready: it binds to Render's `PORT`, parses `DATABASE_URL`, runs EF migrations on startup, and seeds the first admin if the database is empty.
 
+> **Important:** Render does not support native .NET/C# deployment. To deploy the .NET 9 backend on Render, you **must use a Docker container**. The project includes a pre-configured `dockerfile` for this purpose.
+
 ### Step 1 — Provision PostgreSQL
 
 1. In the [Render Dashboard](https://dashboard.render.com/), create a **PostgreSQL** instance.
 2. Copy the database URL — Render exposes it as `DATABASE_URL`.
 
-### Step 2 — Deploy the Backend API
+### Step 2 — Deploy the Backend API (Docker Container)
 
 1. **New → Web Service** → connect this GitHub repository.
 2. Configure the service:
 
 | Setting | Value |
 |---------|-------|
+| Runtime | Docker |
 | Root Directory | `/` (repo root) |
-| Build Command | `dotnet publish -c Release -o out` |
-| Start Command | `dotnet out/IKONEX-Academy.dll` |
+| Docker Context | `/` (repo root) |
+| Dockerfile Path | `./dockerfile` |
 
 3. Set environment variables:
 
 | Variable | Value |
 |----------|-------|
 | `DATABASE_URL` | From Render Postgres (link or paste) |
-| `JWT_SECRET` | Strong random secret (required in production) |
 | `DEFAULT_ADMIN_USERNAME` | Initial admin username (optional) |
 | `DEFAULT_ADMIN_PASSWORD` | Initial admin password (optional) |
 | `ALLOWED_CORS_ORIGINS` | Frontend URL, e.g. `https://ikonex-frontend.onrender.com` |
 
 4. Generate a public URL (e.g. `https://ikonex-backend.onrender.com`).
 
-> `PORT` is injected automatically by Render. A `dockerfile` is also available if you prefer container-based deployment.
+> The `dockerfile` uses a multi-stage build process with the official .NET SDK image for building and the lightweight ASP.NET runtime image for running. Render automatically injects the `PORT` environment variable, which the application uses to bind to the correct port.
 
 ### Step 3 — Deploy the Frontend
 
@@ -226,7 +227,6 @@ In **Stream Manager**, select a stream and click **Process Leaderboard Report**:
 - JWT tokens expire after 24 hours.
 - Write actions (create, edit, delete) are recorded in database audit logs.
 - New admin accounts are created from **Admin Deck** by an authenticated admin.
-- Set a strong `JWT_SECRET` in production — do not rely on the built-in default.
 
 ---
 
