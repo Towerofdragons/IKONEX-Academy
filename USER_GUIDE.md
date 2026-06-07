@@ -171,6 +171,8 @@ Or open the frontend URL, sign in, and confirm the dashboard displays stream, st
 
 Sign in at the login screen. The session token is stored in browser `localStorage` and sent with every API request.
 
+Please note that Render spins down inactive projects. Requests made durimg a sleep period may take up to 50 seconds to be handled.
+
 ### Recommended Workflow
 
 ```text
