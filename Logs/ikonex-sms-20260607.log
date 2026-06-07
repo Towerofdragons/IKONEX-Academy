@@ -1,0 +1,1926 @@
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 53.9429ms
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 71.9924ms
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 75.4027ms
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 84.6193ms
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 85.6215ms
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 86.8015ms
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 00:15:29 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 00:15:29 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 00:15:29 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 00:15:29 INF] Executed DbCommand (12ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 00:15:29 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 00:15:29 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:15:29 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:15:29 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:15:29 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 181.0152ms
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 00:15:29 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 178.1456ms
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 00:15:29 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 168.7237ms
+[2026-06-07 00:15:29 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 00:15:29 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] CORS policy execution successful.
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 366.3638ms
+[2026-06-07 00:15:29 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 347.321ms
+[2026-06-07 00:15:29 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 344.3084ms
+[2026-06-07 00:15:29 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 00:15:29 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 00:15:29 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 00:15:29 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 00:15:29 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:15:29 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 00:15:29 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 00:15:29 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 58.1635ms
+[2026-06-07 00:15:29 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:15:29 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:15:29 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 67.4138ms
+[2026-06-07 00:15:29 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 87.4825ms
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 293.6367ms
+[2026-06-07 00:15:29 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 318.4734ms
+[2026-06-07 00:15:29 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:15:29 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 347.1949ms
+[2026-06-07 00:20:17 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/auth/login - null null
+[2026-06-07 00:20:17 INF] CORS policy execution successful.
+[2026-06-07 00:20:17 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/auth/login - 204 null null 10.478ms
+[2026-06-07 00:20:17 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/auth/login - application/json 44
+[2026-06-07 00:20:17 INF] CORS policy execution successful.
+[2026-06-07 00:20:17 INF] Executing endpoint 'IKONEX_Academy.Controllers.AuthController.Login (IKONEX-Academy)'
+[2026-06-07 00:20:17 INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(IKONEX_Academy.DTOs.Auth.LoginDto) on controller IKONEX_Academy.Controllers.AuthController (IKONEX-Academy).
+[2026-06-07 00:20:17 INF] Executed DbCommand (30ms) [Parameters=[@__dto_Username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."CreatedAt", a."PasswordHash", a."Username"
+FROM "Admins" AS a
+WHERE a."Username" = @__dto_Username_0
+LIMIT 1
+[2026-06-07 00:20:17 INF] Executing UnauthorizedObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-06-07 00:20:17 INF] Executed action IKONEX_Academy.Controllers.AuthController.Login (IKONEX-Academy) in 236.1278ms
+[2026-06-07 00:20:17 INF] Executed endpoint 'IKONEX_Academy.Controllers.AuthController.Login (IKONEX-Academy)'
+[2026-06-07 00:20:17 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/auth/login - 401 null application/json; charset=utf-8 282.6923ms
+[2026-06-07 00:20:21 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/auth/login - application/json 43
+[2026-06-07 00:20:21 INF] CORS policy execution successful.
+[2026-06-07 00:20:21 INF] Executing endpoint 'IKONEX_Academy.Controllers.AuthController.Login (IKONEX-Academy)'
+[2026-06-07 00:20:21 INF] Route matched with {action = "Login", controller = "Auth"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] Login(IKONEX_Academy.DTOs.Auth.LoginDto) on controller IKONEX_Academy.Controllers.AuthController (IKONEX-Academy).
+[2026-06-07 00:20:21 INF] Executed DbCommand (5ms) [Parameters=[@__dto_Username_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT a."Id", a."CreatedAt", a."PasswordHash", a."Username"
+FROM "Admins" AS a
+WHERE a."Username" = @__dto_Username_0
+LIMIT 1
+[2026-06-07 00:20:21 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType1`2[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e],[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-06-07 00:20:22 INF] Executed action IKONEX_Academy.Controllers.AuthController.Login (IKONEX-Academy) in 211.3532ms
+[2026-06-07 00:20:22 INF] Executed endpoint 'IKONEX_Academy.Controllers.AuthController.Login (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/auth/login - 200 null application/json; charset=utf-8 252.91ms
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 29.5176ms
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 84.8309ms
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 157.0304ms
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 108.8996ms
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 115.6061ms
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 148.7427ms
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 00:20:22 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 00:20:22 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 00:20:22 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 00:20:22 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 00:20:22 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 00:20:22 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:20:22 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:20:22 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:20:22 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 59.4382ms
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 00:20:22 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 50.786ms
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 00:20:22 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 45.4905ms
+[2026-06-07 00:20:22 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 00:20:22 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] CORS policy execution successful.
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 299.9889ms
+[2026-06-07 00:20:22 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 216.8982ms
+[2026-06-07 00:20:22 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 176.9618ms
+[2026-06-07 00:20:22 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 00:20:22 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 00:20:22 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 00:20:22 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 00:20:22 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 00:20:22 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 00:20:22 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:20:22 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:20:22 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 00:20:22 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 48.737ms
+[2026-06-07 00:20:22 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 45.0101ms
+[2026-06-07 00:20:22 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 46.4384ms
+[2026-06-07 00:20:22 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 205.522ms
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 200.3687ms
+[2026-06-07 00:20:22 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 202.7337ms
+[2026-06-07 01:16:00 INF] Request starting HTTP/1.1 GET http://localhost:5178/swagger/index.html - null null
+[2026-06-07 01:16:00 INF] Request finished HTTP/1.1 GET http://localhost:5178/swagger/index.html - 304 null null 150.0665ms
+[2026-06-07 01:16:00 INF] Request starting HTTP/1.1 GET http://localhost:5178/swagger/swagger-ui.css - null null
+[2026-06-07 01:16:00 INF] Request starting HTTP/1.1 GET http://localhost:5178/swagger/index.css - null null
+[2026-06-07 01:16:00 INF] Request starting HTTP/1.1 GET http://localhost:5178/swagger/swagger-ui-bundle.js - null null
+[2026-06-07 01:16:00 INF] Request starting HTTP/1.1 GET http://localhost:5178/swagger/swagger-ui-standalone-preset.js - null null
+[2026-06-07 01:16:00 INF] Request starting HTTP/1.1 GET http://localhost:5178/swagger/index.js - null null
+[2026-06-07 01:16:00 INF] Request finished HTTP/1.1 GET http://localhost:5178/swagger/index.css - 304 null null 34.6069ms
+[2026-06-07 01:16:00 INF] Request finished HTTP/1.1 GET http://localhost:5178/swagger/swagger-ui.css - 304 null null 45.1889ms
+[2026-06-07 01:16:01 INF] Request finished HTTP/1.1 GET http://localhost:5178/swagger/index.js - 304 null null 68.9673ms
+[2026-06-07 01:16:01 INF] Request finished HTTP/1.1 GET http://localhost:5178/swagger/swagger-ui-bundle.js - 200 418599 text/javascript 91.6174ms
+[2026-06-07 01:16:01 INF] Request finished HTTP/1.1 GET http://localhost:5178/swagger/swagger-ui-standalone-preset.js - 200 76613 text/javascript 106.8958ms
+[2026-06-07 01:16:01 INF] Request starting HTTP/1.1 GET http://localhost:5178/swagger/v1/swagger.json - null null
+[2026-06-07 01:16:02 INF] Request finished HTTP/1.1 GET http://localhost:5178/swagger/v1/swagger.json - 200 null application/json;charset=utf-8 271.2145ms
+[2026-06-07 01:16:52 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 01:16:52 INF] CORS policy execution successful.
+[2026-06-07 01:16:52 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 10.7123ms
+[2026-06-07 01:16:52 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/subjects - application/json 39
+[2026-06-07 01:16:52 INF] CORS policy execution successful.
+[2026-06-07 01:16:52 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.CreateSubject (IKONEX-Academy)'
+[2026-06-07 01:16:52 INF] Route matched with {action = "CreateSubject", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateSubject(IKONEX_Academy.DTOs.Subject.CreateSubjectDto) on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:16:52 INF] Executed DbCommand (62ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Subjects" AS s
+    WHERE lower(s."Name") = @__ToLower_0)
+[2026-06-07 01:16:52 INF] Executed DbCommand (2ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Subjects" AS s
+    WHERE lower(s."Code") = @__ToLower_0)
+[2026-06-07 01:16:52 INF] Executed DbCommand (11ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Subjects" ("Id", "Code", "Name")
+VALUES (@p0, @p1, @p2);
+[2026-06-07 01:16:52 INF] Executed DbCommand (4ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:16:52 INF] Admin 'admin' created subject 'Mathematics' (MATH101, Id: "e70882c8-adcd-4aa0-b542-143c8b8c9ab4")
+[2026-06-07 01:16:52 INF] Executing CreatedAtRouteResult, writing value of type 'IKONEX_Academy.DTOs.Subject.SubjectDto'.
+[2026-06-07 01:16:52 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.CreateSubject (IKONEX-Academy) in 440.4647ms
+[2026-06-07 01:16:52 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.CreateSubject (IKONEX-Academy)'
+[2026-06-07 01:16:52 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/subjects - 201 null application/json; charset=utf-8 490.6666ms
+[2026-06-07 01:16:52 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 01:16:52 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 01:16:53 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 01:16:53 INF] CORS policy execution successful.
+[2026-06-07 01:16:53 INF] CORS policy execution successful.
+[2026-06-07 01:16:53 INF] CORS policy execution successful.
+[2026-06-07 01:16:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 84.5398ms
+[2026-06-07 01:16:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:16:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 50.9392ms
+[2026-06-07 01:16:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 01:16:53 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:16:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 01:16:53 INF] CORS policy execution successful.
+[2026-06-07 01:16:53 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 01:16:53 INF] CORS policy execution successful.
+[2026-06-07 01:16:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:16:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:16:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:16:53 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:16:53 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 33.9811ms
+[2026-06-07 01:16:53 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:16:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:16:53 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 01:16:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 216.1113ms
+[2026-06-07 01:16:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:16:53 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 47.746ms
+[2026-06-07 01:16:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:16:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 146.7876ms
+[2026-06-07 01:16:53 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 01:16:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:16:53 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 101.2556ms
+[2026-06-07 01:16:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:16:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 193.4927ms
+[2026-06-07 01:17:08 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 01:17:08 INF] CORS policy execution successful.
+[2026-06-07 01:17:08 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 13.6203ms
+[2026-06-07 01:17:09 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/subjects - application/json 34
+[2026-06-07 01:17:09 INF] CORS policy execution successful.
+[2026-06-07 01:17:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.CreateSubject (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Route matched with {action = "CreateSubject", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] CreateSubject(IKONEX_Academy.DTOs.Subject.CreateSubjectDto) on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:17:09 INF] Executed DbCommand (3ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Subjects" AS s
+    WHERE lower(s."Name") = @__ToLower_0)
+[2026-06-07 01:17:09 INF] Executed DbCommand (8ms) [Parameters=[@__ToLower_0='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Subjects" AS s
+    WHERE lower(s."Code") = @__ToLower_0)
+[2026-06-07 01:17:09 INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?'], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Subjects" ("Id", "Code", "Name")
+VALUES (@p0, @p1, @p2);
+[2026-06-07 01:17:09 INF] Executed DbCommand (6ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:17:09 INF] Admin 'admin' created subject 'English' (ENG101, Id: "4a3284a6-c257-4ccd-a6b1-6c7f80c8b982")
+[2026-06-07 01:17:09 INF] Executing CreatedAtRouteResult, writing value of type 'IKONEX_Academy.DTOs.Subject.SubjectDto'.
+[2026-06-07 01:17:09 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.CreateSubject (IKONEX-Academy) in 79.8056ms
+[2026-06-07 01:17:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.CreateSubject (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/subjects - 201 null application/json; charset=utf-8 123.119ms
+[2026-06-07 01:17:09 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 01:17:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 01:17:09 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 01:17:09 INF] CORS policy execution successful.
+[2026-06-07 01:17:09 INF] CORS policy execution successful.
+[2026-06-07 01:17:09 INF] CORS policy execution successful.
+[2026-06-07 01:17:09 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 55.6581ms
+[2026-06-07 01:17:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 38.3339ms
+[2026-06-07 01:17:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 01:17:09 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:17:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 01:17:09 INF] CORS policy execution successful.
+[2026-06-07 01:17:09 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 01:17:09 INF] CORS policy execution successful.
+[2026-06-07 01:17:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:17:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:17:09 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 43.7637ms
+[2026-06-07 01:17:09 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:17:09 INF] Executed DbCommand (5ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 01:17:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 01:17:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:17:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 211.9013ms
+[2026-06-07 01:17:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:17:09 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 58.4542ms
+[2026-06-07 01:17:09 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 74.1009ms
+[2026-06-07 01:17:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:17:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 220.893ms
+[2026-06-07 01:17:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 209.132ms
+[2026-06-07 01:17:19 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:17:20 INF] CORS policy execution successful.
+[2026-06-07 01:17:20 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 204 null null 43.5146ms
+[2026-06-07 01:17:20 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:17:20 INF] CORS policy execution successful.
+[2026-06-07 01:17:20 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:17:20 INF] Route matched with {action = "GetStreamById", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamById(System.Guid) on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:17:20 WRN] Compiling a query which loads related collections for more than one collection navigation, either via 'Include' or through projection, but no 'QuerySplittingBehavior' has been configured. By default, Entity Framework will use 'QuerySplittingBehavior.SingleQuery', which can potentially result in slow query performance. See https://go.microsoft.com/fwlink/?linkid=2134277 for more information. To identify the query that's triggering this warning call 'ConfigureWarnings(w => w.Throw(RelationalEventId.MultipleCollectionIncludeWarning))'.
+[2026-06-07 01:17:20 INF] Executed DbCommand (12ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s0."Id", s0."Name", s0."RegNumber", s0."StreamId", s4."StreamId", s4."SubjectId", s4."Id", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name"
+    FROM "Streams" AS s
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN "Students" AS s0 ON s3."Id" = s0."StreamId"
+LEFT JOIN (
+    SELECT s1."StreamId", s1."SubjectId", s2."Id", s2."Code", s2."Name"
+    FROM "StreamSubjects" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StreamId"
+ORDER BY s3."Id", s0."Id", s4."StreamId", s4."SubjectId"
+[2026-06-07 01:17:20 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Stream.StreamDetailDto'.
+[2026-06-07 01:17:20 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy) in 104.3102ms
+[2026-06-07 01:17:20 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:17:20 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 200 null application/json; charset=utf-8 160.6033ms
+[2026-06-07 01:17:25 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/4a3284a6-c257-4ccd-a6b1-6c7f80c8b982 - null null
+[2026-06-07 01:17:25 INF] CORS policy execution successful.
+[2026-06-07 01:17:25 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/4a3284a6-c257-4ccd-a6b1-6c7f80c8b982 - 204 null null 13.9853ms
+[2026-06-07 01:17:25 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/4a3284a6-c257-4ccd-a6b1-6c7f80c8b982 - null 0
+[2026-06-07 01:17:25 INF] CORS policy execution successful.
+[2026-06-07 01:17:25 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.AssignSubjectToStream (IKONEX-Academy)'
+[2026-06-07 01:17:25 INF] Route matched with {action = "AssignSubjectToStream", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignSubjectToStream(System.Guid, System.Guid) on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:17:25 INF] Executed DbCommand (2ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Streams" AS s
+    WHERE s."Id" = @__streamId_0)
+[2026-06-07 01:17:25 INF] Executed DbCommand (1ms) [Parameters=[@__subjectId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Subjects" AS s
+    WHERE s."Id" = @__subjectId_0)
+[2026-06-07 01:17:25 INF] Executed DbCommand (3ms) [Parameters=[@__streamId_0='?' (DbType = Guid), @__subjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StreamSubjects" AS s
+    WHERE s."StreamId" = @__streamId_0 AND s."SubjectId" = @__subjectId_1)
+[2026-06-07 01:17:25 INF] Executed DbCommand (8ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "StreamSubjects" ("StreamId", "SubjectId")
+VALUES (@p0, @p1);
+[2026-06-07 01:17:25 INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:17:25 INF] Admin 'admin' assigned subject '"4a3284a6-c257-4ccd-a6b1-6c7f80c8b982"' to stream '"a54d0a3a-0354-4e30-8184-bd0167fe64f8"'
+[2026-06-07 01:17:25 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-06-07 01:17:25 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.AssignSubjectToStream (IKONEX-Academy) in 153.8157ms
+[2026-06-07 01:17:25 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.AssignSubjectToStream (IKONEX-Academy)'
+[2026-06-07 01:17:25 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/4a3284a6-c257-4ccd-a6b1-6c7f80c8b982 - 200 null application/json; charset=utf-8 206.7899ms
+[2026-06-07 01:17:25 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:17:25 INF] CORS policy execution successful.
+[2026-06-07 01:17:25 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 204 null null 32.497ms
+[2026-06-07 01:17:25 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:17:25 INF] CORS policy execution successful.
+[2026-06-07 01:17:25 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:17:25 INF] Route matched with {action = "GetStreamById", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamById(System.Guid) on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:17:25 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s0."Id", s0."Name", s0."RegNumber", s0."StreamId", s4."StreamId", s4."SubjectId", s4."Id", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name"
+    FROM "Streams" AS s
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN "Students" AS s0 ON s3."Id" = s0."StreamId"
+LEFT JOIN (
+    SELECT s1."StreamId", s1."SubjectId", s2."Id", s2."Code", s2."Name"
+    FROM "StreamSubjects" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StreamId"
+ORDER BY s3."Id", s0."Id", s4."StreamId", s4."SubjectId"
+[2026-06-07 01:17:25 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Stream.StreamDetailDto'.
+[2026-06-07 01:17:25 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy) in 32.0017ms
+[2026-06-07 01:17:25 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:17:25 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 200 null application/json; charset=utf-8 72.8827ms
+[2026-06-07 01:17:28 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/e70882c8-adcd-4aa0-b542-143c8b8c9ab4 - null null
+[2026-06-07 01:17:28 INF] CORS policy execution successful.
+[2026-06-07 01:17:28 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/e70882c8-adcd-4aa0-b542-143c8b8c9ab4 - 204 null null 20.1217ms
+[2026-06-07 01:17:28 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/e70882c8-adcd-4aa0-b542-143c8b8c9ab4 - null 0
+[2026-06-07 01:17:28 INF] CORS policy execution successful.
+[2026-06-07 01:17:28 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.AssignSubjectToStream (IKONEX-Academy)'
+[2026-06-07 01:17:28 INF] Route matched with {action = "AssignSubjectToStream", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] AssignSubjectToStream(System.Guid, System.Guid) on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:17:28 INF] Executed DbCommand (1ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Streams" AS s
+    WHERE s."Id" = @__streamId_0)
+[2026-06-07 01:17:28 INF] Executed DbCommand (1ms) [Parameters=[@__subjectId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Subjects" AS s
+    WHERE s."Id" = @__subjectId_0)
+[2026-06-07 01:17:28 INF] Executed DbCommand (1ms) [Parameters=[@__streamId_0='?' (DbType = Guid), @__subjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StreamSubjects" AS s
+    WHERE s."StreamId" = @__streamId_0 AND s."SubjectId" = @__subjectId_1)
+[2026-06-07 01:17:28 INF] Executed DbCommand (3ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "StreamSubjects" ("StreamId", "SubjectId")
+VALUES (@p0, @p1);
+[2026-06-07 01:17:28 INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:17:28 INF] Admin 'admin' assigned subject '"e70882c8-adcd-4aa0-b542-143c8b8c9ab4"' to stream '"a54d0a3a-0354-4e30-8184-bd0167fe64f8"'
+[2026-06-07 01:17:28 INF] Executing OkObjectResult, writing value of type '<>f__AnonymousType4`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-06-07 01:17:28 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.AssignSubjectToStream (IKONEX-Academy) in 117.0401ms
+[2026-06-07 01:17:28 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.AssignSubjectToStream (IKONEX-Academy)'
+[2026-06-07 01:17:28 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8/subjects/e70882c8-adcd-4aa0-b542-143c8b8c9ab4 - 200 null application/json; charset=utf-8 172.0568ms
+[2026-06-07 01:17:28 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:17:28 INF] CORS policy execution successful.
+[2026-06-07 01:17:28 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:17:28 INF] Route matched with {action = "GetStreamById", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamById(System.Guid) on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:17:28 INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s0."Id", s0."Name", s0."RegNumber", s0."StreamId", s4."StreamId", s4."SubjectId", s4."Id", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name"
+    FROM "Streams" AS s
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN "Students" AS s0 ON s3."Id" = s0."StreamId"
+LEFT JOIN (
+    SELECT s1."StreamId", s1."SubjectId", s2."Id", s2."Code", s2."Name"
+    FROM "StreamSubjects" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StreamId"
+ORDER BY s3."Id", s0."Id", s4."StreamId", s4."SubjectId"
+[2026-06-07 01:17:28 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Stream.StreamDetailDto'.
+[2026-06-07 01:17:28 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy) in 19.8161ms
+[2026-06-07 01:17:28 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:17:28 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 200 null application/json; charset=utf-8 71.8588ms
+[2026-06-07 01:17:38 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:17:38 INF] CORS policy execution successful.
+[2026-06-07 01:17:38 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 24.1615ms
+[2026-06-07 01:17:38 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:17:38 INF] CORS policy execution successful.
+[2026-06-07 01:17:38 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:17:38 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:17:38 INF] Executed DbCommand (8ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:17:38 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:17:38 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 33.1588ms
+[2026-06-07 01:17:38 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:17:38 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 84.7774ms
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 12.2189ms
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 PUT http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - application/json 87
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy)'
+[2026-06-07 01:17:54 INF] Route matched with {action = "EditStudent", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] EditStudent(System.Guid, IKONEX_Academy.DTOs.Student.UpdateStudentDto) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:17:54 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:17:54 INF] Executed DbCommand (1ms) [Parameters=[@__dto_StreamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Streams" AS s
+    WHERE s."Id" = @__dto_StreamId_0)
+[2026-06-07 01:17:54 INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid), @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Students" AS s
+    WHERE s."Id" <> @__id_0 AND lower(s."RegNumber") = @__ToLower_1)
+[2026-06-07 01:17:54 INF] Executed DbCommand (6ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Students" SET "StreamId" = @p0
+WHERE "Id" = @p1;
+[2026-06-07 01:17:54 INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:17:54 INF] Admin 'admin' updated student 'Test' (RegNumber: Test001, StudentId: "fd09e74a-e103-4eb3-8e11-f95be0b53118")
+[2026-06-07 01:17:54 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDto'.
+[2026-06-07 01:17:54 INF] Executed action IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy) in 158.4664ms
+[2026-06-07 01:17:54 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy)'
+[2026-06-07 01:17:54 INF] Request finished HTTP/1.1 PUT http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 203.6522ms
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 59.2885ms
+[2026-06-07 01:17:54 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 62.3026ms
+[2026-06-07 01:17:54 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 63.3659ms
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 01:17:54 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] CORS policy execution successful.
+[2026-06-07 01:17:54 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:17:54 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:17:54 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:17:54 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:17:55 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:17:55 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:17:55 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 01:17:55 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 01:17:55 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:17:55 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:17:55 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 59.7942ms
+[2026-06-07 01:17:55 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 54.5174ms
+[2026-06-07 01:17:55 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:17:55 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:17:55 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 189.8695ms
+[2026-06-07 01:17:55 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 200.8929ms
+[2026-06-07 01:17:55 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 01:17:55 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:17:55 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 128.7068ms
+[2026-06-07 01:17:55 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:17:55 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 244.5093ms
+[2026-06-07 01:17:59 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:17:59 INF] CORS policy execution successful.
+[2026-06-07 01:17:59 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:17:59 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:17:59 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:17:59 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:17:59 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 30.3638ms
+[2026-06-07 01:17:59 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:17:59 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 88.5523ms
+[2026-06-07 01:18:09 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/scores - null null
+[2026-06-07 01:18:09 INF] CORS policy execution successful.
+[2026-06-07 01:18:09 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/scores - 204 null null 19.9387ms
+[2026-06-07 01:18:09 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/scores - application/json 131
+[2026-06-07 01:18:09 INF] CORS policy execution successful.
+[2026-06-07 01:18:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy)'
+[2026-06-07 01:18:09 INF] Route matched with {action = "RecordScore", controller = "Scores"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RecordScore(IKONEX_Academy.DTOs.Score.RecordScoreDto) on controller IKONEX_Academy.Controllers.ScoresController (IKONEX-Academy).
+[2026-06-07 01:18:09 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:18:09 INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Code", s."Name"
+FROM "Subjects" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:18:09 INF] Executed DbCommand (1ms) [Parameters=[@__dto_StudentId_0='?' (DbType = Guid), @__dto_SubjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Scores" AS s
+    WHERE s."StudentId" = @__dto_StudentId_0 AND s."SubjectId" = @__dto_SubjectId_1)
+[2026-06-07 01:18:09 INF] Executed DbCommand (2ms) [Parameters=[@__student_StreamId_0='?' (DbType = Guid), @__dto_SubjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StreamSubjects" AS s
+    WHERE s."StreamId" = @__student_StreamId_0 AND s."SubjectId" = @__dto_SubjectId_1)
+[2026-06-07 01:18:09 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-06-07 01:18:09 INF] Executed action IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy) in 107.316ms
+[2026-06-07 01:18:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy)'
+[2026-06-07 01:18:09 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/scores - 400 null application/json; charset=utf-8 165.6927ms
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 12.4832ms
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 PUT http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - application/json 87
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy)'
+[2026-06-07 01:19:02 INF] Route matched with {action = "EditStudent", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] EditStudent(System.Guid, IKONEX_Academy.DTOs.Student.UpdateStudentDto) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:02 INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:19:02 INF] Executed DbCommand (1ms) [Parameters=[@__dto_StreamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Streams" AS s
+    WHERE s."Id" = @__dto_StreamId_0)
+[2026-06-07 01:19:02 INF] Executed DbCommand (1ms) [Parameters=[@__id_0='?' (DbType = Guid), @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Students" AS s
+    WHERE s."Id" <> @__id_0 AND lower(s."RegNumber") = @__ToLower_1)
+[2026-06-07 01:19:02 INF] Executed DbCommand (4ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Students" SET "StreamId" = @p0
+WHERE "Id" = @p1;
+[2026-06-07 01:19:02 INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:19:02 INF] Admin 'admin' updated student 'Test' (RegNumber: Test001, StudentId: "fd09e74a-e103-4eb3-8e11-f95be0b53118")
+[2026-06-07 01:19:02 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDto'.
+[2026-06-07 01:19:02 INF] Executed action IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy) in 95.6818ms
+[2026-06-07 01:19:02 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy)'
+[2026-06-07 01:19:02 INF] Request finished HTTP/1.1 PUT http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 144.3092ms
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 48.5102ms
+[2026-06-07 01:19:02 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 57.2007ms
+[2026-06-07 01:19:02 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 55.148ms
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 01:19:02 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] CORS policy execution successful.
+[2026-06-07 01:19:02 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:19:02 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:19:02 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:19:02 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:02 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:19:02 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:19:02 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 01:19:02 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 01:19:03 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 01:19:03 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:19:03 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:19:03 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:19:03 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 76.7101ms
+[2026-06-07 01:19:03 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 74.5621ms
+[2026-06-07 01:19:03 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:19:03 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:19:03 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 68.3198ms
+[2026-06-07 01:19:03 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 211.8239ms
+[2026-06-07 01:19:03 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 227.5823ms
+[2026-06-07 01:19:03 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:19:03 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 244.5679ms
+[2026-06-07 01:19:08 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:08 INF] CORS policy execution successful.
+[2026-06-07 01:19:08 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 27.1816ms
+[2026-06-07 01:19:08 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:08 INF] CORS policy execution successful.
+[2026-06-07 01:19:08 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:08 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:08 INF] Executed DbCommand (5ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:19:08 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:19:08 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 35.4459ms
+[2026-06-07 01:19:08 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:08 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 81.1512ms
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/scores - null null
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/scores - 204 null null 16.3214ms
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/scores - application/json 131
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] Executing endpoint 'IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Route matched with {action = "RecordScore", controller = "Scores"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RecordScore(IKONEX_Academy.DTOs.Score.RecordScoreDto) on controller IKONEX_Academy.Controllers.ScoresController (IKONEX-Academy).
+[2026-06-07 01:19:18 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:19:18 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Code", s."Name"
+FROM "Subjects" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:19:18 INF] Executed DbCommand (1ms) [Parameters=[@__dto_StudentId_0='?' (DbType = Guid), @__dto_SubjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Scores" AS s
+    WHERE s."StudentId" = @__dto_StudentId_0 AND s."SubjectId" = @__dto_SubjectId_1)
+[2026-06-07 01:19:18 INF] Executed DbCommand (3ms) [Parameters=[@__student_StreamId_0='?' (DbType = Guid), @__dto_SubjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StreamSubjects" AS s
+    WHERE s."StreamId" = @__student_StreamId_0 AND s."SubjectId" = @__dto_SubjectId_1)
+[2026-06-07 01:19:18 INF] Executed DbCommand (5ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?' (DbType = Double), @p2='?' (DbType = Double), @p3='?' (DbType = Guid), @p4='?' (DbType = Guid), @p5='?' (DbType = Double)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "Scores" ("Id", "CAScore", "ExamScore", "StudentId", "SubjectId", "TotalScore")
+VALUES (@p0, @p1, @p2, @p3, @p4, @p5);
+[2026-06-07 01:19:18 INF] Executed DbCommand (1ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:19:18 INF] Admin 'admin' recorded score for student '"fd09e74a-e103-4eb3-8e11-f95be0b53118"' on subject '"4a3284a6-c257-4ccd-a6b1-6c7f80c8b982"' (ScoreId: "a44bfd54-1827-49c6-a6a3-697ba67c28de")
+[2026-06-07 01:19:18 INF] Executing CreatedAtRouteResult, writing value of type 'IKONEX_Academy.DTOs.Score.ScoreDto'.
+[2026-06-07 01:19:18 INF] Executed action IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy) in 156.7578ms
+[2026-06-07 01:19:18 INF] Executed endpoint 'IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/scores - 201 null application/json; charset=utf-8 203.7461ms
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 83.9979ms
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 90.2506ms
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 93.4289ms
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 95.565ms
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:18 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] CORS policy execution successful.
+[2026-06-07 01:19:18 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:18 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:19:18 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:18 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:19:18 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 01:19:18 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 01:19:18 INF] Executed DbCommand (3ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:19:18 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:19:18 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:19:18 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 79.4003ms
+[2026-06-07 01:19:18 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:19:18 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 79.3616ms
+[2026-06-07 01:19:18 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 77.9806ms
+[2026-06-07 01:19:18 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 252.039ms
+[2026-06-07 01:19:18 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 244.7258ms
+[2026-06-07 01:19:18 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 246.0476ms
+[2026-06-07 01:19:18 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:19:18 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 145.4118ms
+[2026-06-07 01:19:18 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:19:18 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 283.3162ms
+[2026-06-07 01:19:29 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:29 INF] CORS policy execution successful.
+[2026-06-07 01:19:29 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 33.9378ms
+[2026-06-07 01:19:29 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:29 INF] CORS policy execution successful.
+[2026-06-07 01:19:29 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:29 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:29 INF] Executed DbCommand (7ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:19:29 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:19:29 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 30.6563ms
+[2026-06-07 01:19:29 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:29 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 76.6445ms
+[2026-06-07 01:19:30 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:30 INF] CORS policy execution successful.
+[2026-06-07 01:19:30 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:30 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:30 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:19:30 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:19:30 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 29.8721ms
+[2026-06-07 01:19:30 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:30 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 94.688ms
+[2026-06-07 01:19:45 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:45 INF] CORS policy execution successful.
+[2026-06-07 01:19:45 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 28.9293ms
+[2026-06-07 01:19:45 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:19:45 INF] CORS policy execution successful.
+[2026-06-07 01:19:45 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:45 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:19:45 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:19:45 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:19:45 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 30.6506ms
+[2026-06-07 01:19:45 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:19:45 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 84.1532ms
+[2026-06-07 01:19:45 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:19:45 INF] CORS policy execution successful.
+[2026-06-07 01:19:45 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 204 null null 16.1551ms
+[2026-06-07 01:19:45 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:19:45 INF] CORS policy execution successful.
+[2026-06-07 01:19:45 INF] Executing endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:19:45 INF] Route matched with {action = "GetStreamReport", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamReport(System.Guid, System.Nullable`1[System.Guid]) on controller IKONEX_Academy.Controllers.ReportsController (IKONEX-Academy).
+[2026-06-07 01:19:45 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:19:45 INF] Executed DbCommand (1ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Id", s0."Code", s0."Name"
+FROM "StreamSubjects" AS s
+INNER JOIN "Subjects" AS s0 ON s."SubjectId" = s0."Id"
+WHERE s."StreamId" = @__streamId_0
+[2026-06-07 01:19:45 INF] Executed DbCommand (3ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s2."Id", s2."CAScore", s2."ExamScore", s2."StudentId", s2."SubjectId", s2."TotalScore", s2."Id0", s2."Code", s2."Name"
+FROM "Students" AS s
+LEFT JOIN (
+    SELECT s0."Id", s0."CAScore", s0."ExamScore", s0."StudentId", s0."SubjectId", s0."TotalScore", s1."Id" AS "Id0", s1."Code", s1."Name"
+    FROM "Scores" AS s0
+    INNER JOIN "Subjects" AS s1 ON s0."SubjectId" = s1."Id"
+) AS s2 ON s."Id" = s2."StudentId"
+WHERE s."StreamId" = @__streamId_0
+ORDER BY s."Id", s2."Id"
+[2026-06-07 01:19:45 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Report.StreamReportDto'.
+[2026-06-07 01:19:45 INF] Executed action IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy) in 79.2939ms
+[2026-06-07 01:19:45 INF] Executed endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:19:45 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 200 null application/json; charset=utf-8 140.0482ms
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 17.775ms
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 PUT http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - application/json 87
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Route matched with {action = "EditStudent", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] EditStudent(System.Guid, IKONEX_Academy.DTOs.Student.UpdateStudentDto) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:20:28 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:20:28 INF] Executed DbCommand (1ms) [Parameters=[@__dto_StreamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Streams" AS s
+    WHERE s."Id" = @__dto_StreamId_0)
+[2026-06-07 01:20:28 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid), @__ToLower_1='?'], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Students" AS s
+    WHERE s."Id" <> @__id_0 AND lower(s."RegNumber") = @__ToLower_1)
+[2026-06-07 01:20:28 INF] Executed DbCommand (1ms) [Parameters=[@p1='?' (DbType = Guid), @p0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+UPDATE "Students" SET "StreamId" = @p0
+WHERE "Id" = @p1;
+[2026-06-07 01:20:28 INF] Executed DbCommand (2ms) [Parameters=[@p0='?' (DbType = Guid), @p1='?', @p2='?', @p3='?', @p4='?' (DbType = DateTime)], CommandType='"Text"', CommandTimeout='30']
+INSERT INTO "AuditLogs" ("Id", "Action", "AdminUsername", "EntityId", "Timestamp")
+VALUES (@p0, @p1, @p2, @p3, @p4);
+[2026-06-07 01:20:28 INF] Admin 'admin' updated student 'Test' (RegNumber: Test001, StudentId: "fd09e74a-e103-4eb3-8e11-f95be0b53118")
+[2026-06-07 01:20:28 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDto'.
+[2026-06-07 01:20:28 INF] Executed action IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy) in 84.4717ms
+[2026-06-07 01:20:28 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.EditStudent (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 PUT http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 137.0469ms
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 43.8927ms
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 41.958ms
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 42.4371ms
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 01:20:28 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] CORS policy execution successful.
+[2026-06-07 01:20:28 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:20:28 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 01:20:28 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:20:28 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 01:20:28 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 01:20:28 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 01:20:28 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:20:28 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:20:28 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 01:20:28 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 57.8215ms
+[2026-06-07 01:20:28 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 54.1699ms
+[2026-06-07 01:20:28 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 52.5924ms
+[2026-06-07 01:20:28 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 161.7347ms
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 159.8328ms
+[2026-06-07 01:20:28 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 154.8513ms
+[2026-06-07 01:20:40 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:20:41 INF] CORS policy execution successful.
+[2026-06-07 01:20:41 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 204 null null 28.0632ms
+[2026-06-07 01:20:41 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - null null
+[2026-06-07 01:20:41 INF] CORS policy execution successful.
+[2026-06-07 01:20:41 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:20:41 INF] Route matched with {action = "GetStudentById", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStudentById(System.Guid) on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 01:20:41 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s3."RegNumber", s3."StreamId", s3."Id0", s3."Name0", s4."Id", s4."CAScore", s4."ExamScore", s4."StudentId", s4."SubjectId", s4."TotalScore", s4."Id0", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s0."Id" AS "Id0", s0."Name" AS "Name0"
+    FROM "Students" AS s
+    INNER JOIN "Streams" AS s0 ON s."StreamId" = s0."Id"
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN (
+    SELECT s1."Id", s1."CAScore", s1."ExamScore", s1."StudentId", s1."SubjectId", s1."TotalScore", s2."Id" AS "Id0", s2."Code", s2."Name"
+    FROM "Scores" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StudentId"
+ORDER BY s3."Id", s3."Id0", s4."Id"
+[2026-06-07 01:20:41 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Student.StudentDetailDto'.
+[2026-06-07 01:20:41 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy) in 25.7064ms
+[2026-06-07 01:20:41 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetStudentById (IKONEX-Academy)'
+[2026-06-07 01:20:41 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students/fd09e74a-e103-4eb3-8e11-f95be0b53118 - 200 null application/json; charset=utf-8 64.5322ms
+[2026-06-07 01:21:05 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/scores - null null
+[2026-06-07 01:21:05 INF] CORS policy execution successful.
+[2026-06-07 01:21:05 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/scores - 204 null null 12.8276ms
+[2026-06-07 01:21:05 INF] Request starting HTTP/1.1 POST http://localhost:5178/api/scores - application/json 131
+[2026-06-07 01:21:05 INF] CORS policy execution successful.
+[2026-06-07 01:21:05 INF] Executing endpoint 'IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy)'
+[2026-06-07 01:21:05 INF] Route matched with {action = "RecordScore", controller = "Scores"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] RecordScore(IKONEX_Academy.DTOs.Score.RecordScoreDto) on controller IKONEX_Academy.Controllers.ScoresController (IKONEX-Academy).
+[2026-06-07 01:21:05 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:21:05 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Code", s."Name"
+FROM "Subjects" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:21:05 INF] Executed DbCommand (1ms) [Parameters=[@__dto_StudentId_0='?' (DbType = Guid), @__dto_SubjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "Scores" AS s
+    WHERE s."StudentId" = @__dto_StudentId_0 AND s."SubjectId" = @__dto_SubjectId_1)
+[2026-06-07 01:21:05 INF] Executed DbCommand (1ms) [Parameters=[@__student_StreamId_0='?' (DbType = Guid), @__dto_SubjectId_1='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT EXISTS (
+    SELECT 1
+    FROM "StreamSubjects" AS s
+    WHERE s."StreamId" = @__student_StreamId_0 AND s."SubjectId" = @__dto_SubjectId_1)
+[2026-06-07 01:21:05 INF] Executing BadRequestObjectResult, writing value of type '<>f__AnonymousType0`1[[System.String, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]'.
+[2026-06-07 01:21:05 INF] Executed action IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy) in 68.5048ms
+[2026-06-07 01:21:05 INF] Executed endpoint 'IKONEX_Academy.Controllers.ScoresController.RecordScore (IKONEX-Academy)'
+[2026-06-07 01:21:05 INF] Request finished HTTP/1.1 POST http://localhost:5178/api/scores - 400 null application/json; charset=utf-8 115.2436ms
+[2026-06-07 01:35:21 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:35:21 INF] CORS policy execution successful.
+[2026-06-07 01:35:21 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 204 null null 48.4672ms
+[2026-06-07 01:35:21 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 01:35:21 INF] CORS policy execution successful.
+[2026-06-07 01:35:21 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:35:21 INF] Route matched with {action = "GetStreamById", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamById(System.Guid) on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:35:21 INF] Executed DbCommand (16ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s0."Id", s0."Name", s0."RegNumber", s0."StreamId", s4."StreamId", s4."SubjectId", s4."Id", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name"
+    FROM "Streams" AS s
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN "Students" AS s0 ON s3."Id" = s0."StreamId"
+LEFT JOIN (
+    SELECT s1."StreamId", s1."SubjectId", s2."Id", s2."Code", s2."Name"
+    FROM "StreamSubjects" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StreamId"
+ORDER BY s3."Id", s0."Id", s4."StreamId", s4."SubjectId"
+[2026-06-07 01:35:21 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Stream.StreamDetailDto'.
+[2026-06-07 01:35:21 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy) in 128.6144ms
+[2026-06-07 01:35:21 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:35:21 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 200 null application/json; charset=utf-8 183.1044ms
+[2026-06-07 01:35:27 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:27 INF] CORS policy execution successful.
+[2026-06-07 01:35:27 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - 204 null null 36.8628ms
+[2026-06-07 01:35:27 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:27 INF] CORS policy execution successful.
+[2026-06-07 01:35:27 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:35:27 INF] Route matched with {action = "GetStreamById", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamById(System.Guid) on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 01:35:27 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s0."Id", s0."Name", s0."RegNumber", s0."StreamId", s4."StreamId", s4."SubjectId", s4."Id", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name"
+    FROM "Streams" AS s
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN "Students" AS s0 ON s3."Id" = s0."StreamId"
+LEFT JOIN (
+    SELECT s1."StreamId", s1."SubjectId", s2."Id", s2."Code", s2."Name"
+    FROM "StreamSubjects" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StreamId"
+ORDER BY s3."Id", s0."Id", s4."StreamId", s4."SubjectId"
+[2026-06-07 01:35:27 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Stream.StreamDetailDto'.
+[2026-06-07 01:35:27 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy) in 36.3788ms
+[2026-06-07 01:35:27 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 01:35:27 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - 200 null application/json; charset=utf-8 78.2499ms
+[2026-06-07 01:35:32 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:32 INF] CORS policy execution successful.
+[2026-06-07 01:35:32 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 204 null null 32.6655ms
+[2026-06-07 01:35:32 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:32 INF] CORS policy execution successful.
+[2026-06-07 01:35:32 INF] Executing endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:32 INF] Route matched with {action = "GetStreamReport", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamReport(System.Guid, System.Nullable`1[System.Guid]) on controller IKONEX_Academy.Controllers.ReportsController (IKONEX-Academy).
+[2026-06-07 01:35:32 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:35:32 INF] Executed DbCommand (2ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Id", s0."Code", s0."Name"
+FROM "StreamSubjects" AS s
+INNER JOIN "Subjects" AS s0 ON s."SubjectId" = s0."Id"
+WHERE s."StreamId" = @__streamId_0
+[2026-06-07 01:35:32 INF] Executed DbCommand (6ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s2."Id", s2."CAScore", s2."ExamScore", s2."StudentId", s2."SubjectId", s2."TotalScore", s2."Id0", s2."Code", s2."Name"
+FROM "Students" AS s
+LEFT JOIN (
+    SELECT s0."Id", s0."CAScore", s0."ExamScore", s0."StudentId", s0."SubjectId", s0."TotalScore", s1."Id" AS "Id0", s1."Code", s1."Name"
+    FROM "Scores" AS s0
+    INNER JOIN "Subjects" AS s1 ON s0."SubjectId" = s1."Id"
+) AS s2 ON s."Id" = s2."StudentId"
+WHERE s."StreamId" = @__streamId_0
+ORDER BY s."Id", s2."Id"
+[2026-06-07 01:35:32 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Report.StreamReportDto'.
+[2026-06-07 01:35:32 INF] Executed action IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy) in 57.4696ms
+[2026-06-07 01:35:32 INF] Executed endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:32 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 200 null application/json; charset=utf-8 98.8435ms
+[2026-06-07 01:35:46 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:46 INF] CORS policy execution successful.
+[2026-06-07 01:35:46 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 204 null null 18.5355ms
+[2026-06-07 01:35:46 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:46 INF] CORS policy execution successful.
+[2026-06-07 01:35:46 INF] Executing endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:46 INF] Route matched with {action = "GetStreamReport", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamReport(System.Guid, System.Nullable`1[System.Guid]) on controller IKONEX_Academy.Controllers.ReportsController (IKONEX-Academy).
+[2026-06-07 01:35:46 INF] Executed DbCommand (4ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:35:46 INF] Executed DbCommand (3ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Id", s0."Code", s0."Name"
+FROM "StreamSubjects" AS s
+INNER JOIN "Subjects" AS s0 ON s."SubjectId" = s0."Id"
+WHERE s."StreamId" = @__streamId_0
+[2026-06-07 01:35:46 INF] Executed DbCommand (3ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s2."Id", s2."CAScore", s2."ExamScore", s2."StudentId", s2."SubjectId", s2."TotalScore", s2."Id0", s2."Code", s2."Name"
+FROM "Students" AS s
+LEFT JOIN (
+    SELECT s0."Id", s0."CAScore", s0."ExamScore", s0."StudentId", s0."SubjectId", s0."TotalScore", s1."Id" AS "Id0", s1."Code", s1."Name"
+    FROM "Scores" AS s0
+    INNER JOIN "Subjects" AS s1 ON s0."SubjectId" = s1."Id"
+) AS s2 ON s."Id" = s2."StudentId"
+WHERE s."StreamId" = @__streamId_0
+ORDER BY s."Id", s2."Id"
+[2026-06-07 01:35:46 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Report.StreamReportDto'.
+[2026-06-07 01:35:46 INF] Executed action IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy) in 61.1804ms
+[2026-06-07 01:35:46 INF] Executed endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:46 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 200 null application/json; charset=utf-8 140.5843ms
+[2026-06-07 01:35:51 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:51 INF] CORS policy execution successful.
+[2026-06-07 01:35:51 INF] Executing endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:51 INF] Route matched with {action = "GetStreamReport", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamReport(System.Guid, System.Nullable`1[System.Guid]) on controller IKONEX_Academy.Controllers.ReportsController (IKONEX-Academy).
+[2026-06-07 01:35:51 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:35:51 INF] Executed DbCommand (1ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Id", s0."Code", s0."Name"
+FROM "StreamSubjects" AS s
+INNER JOIN "Subjects" AS s0 ON s."SubjectId" = s0."Id"
+WHERE s."StreamId" = @__streamId_0
+[2026-06-07 01:35:51 INF] Executed DbCommand (2ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s2."Id", s2."CAScore", s2."ExamScore", s2."StudentId", s2."SubjectId", s2."TotalScore", s2."Id0", s2."Code", s2."Name"
+FROM "Students" AS s
+LEFT JOIN (
+    SELECT s0."Id", s0."CAScore", s0."ExamScore", s0."StudentId", s0."SubjectId", s0."TotalScore", s1."Id" AS "Id0", s1."Code", s1."Name"
+    FROM "Scores" AS s0
+    INNER JOIN "Subjects" AS s1 ON s0."SubjectId" = s1."Id"
+) AS s2 ON s."Id" = s2."StudentId"
+WHERE s."StreamId" = @__streamId_0
+ORDER BY s."Id", s2."Id"
+[2026-06-07 01:35:51 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Report.StreamReportDto'.
+[2026-06-07 01:35:51 INF] Executed action IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy) in 82.9377ms
+[2026-06-07 01:35:51 INF] Executed endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:51 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 200 null application/json; charset=utf-8 127.3474ms
+[2026-06-07 01:35:51 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:51 INF] CORS policy execution successful.
+[2026-06-07 01:35:51 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 204 null null 15.5036ms
+[2026-06-07 01:35:51 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 01:35:51 INF] CORS policy execution successful.
+[2026-06-07 01:35:52 INF] Executing endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:52 INF] Route matched with {action = "GetStreamReport", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamReport(System.Guid, System.Nullable`1[System.Guid]) on controller IKONEX_Academy.Controllers.ReportsController (IKONEX-Academy).
+[2026-06-07 01:35:52 INF] Executed DbCommand (2ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 01:35:52 INF] Executed DbCommand (1ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Id", s0."Code", s0."Name"
+FROM "StreamSubjects" AS s
+INNER JOIN "Subjects" AS s0 ON s."SubjectId" = s0."Id"
+WHERE s."StreamId" = @__streamId_0
+[2026-06-07 01:35:52 INF] Executed DbCommand (2ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s2."Id", s2."CAScore", s2."ExamScore", s2."StudentId", s2."SubjectId", s2."TotalScore", s2."Id0", s2."Code", s2."Name"
+FROM "Students" AS s
+LEFT JOIN (
+    SELECT s0."Id", s0."CAScore", s0."ExamScore", s0."StudentId", s0."SubjectId", s0."TotalScore", s1."Id" AS "Id0", s1."Code", s1."Name"
+    FROM "Scores" AS s0
+    INNER JOIN "Subjects" AS s1 ON s0."SubjectId" = s1."Id"
+) AS s2 ON s."Id" = s2."StudentId"
+WHERE s."StreamId" = @__streamId_0
+ORDER BY s."Id", s2."Id"
+[2026-06-07 01:35:52 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Report.StreamReportDto'.
+[2026-06-07 01:35:52 INF] Executed action IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy) in 45.9128ms
+[2026-06-07 01:35:52 INF] Executed endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 01:35:52 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 200 null application/json; charset=utf-8 143.1965ms
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 58.283ms
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 65.4318ms
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 71.828ms
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 78.74ms
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 73.1096ms
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 83.9616ms
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:32:57 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:32:57 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:32:57 INF] Executed DbCommand (45ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:32:57 INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:32:57 INF] Executed DbCommand (46ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:32:57 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:32:57 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:32:57 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:32:57 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 273.2432ms
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:32:57 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 265.446ms
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:32:57 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 298.0682ms
+[2026-06-07 02:32:57 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:32:57 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] CORS policy execution successful.
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 559.9767ms
+[2026-06-07 02:32:57 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 468.9894ms
+[2026-06-07 02:32:57 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 503.5636ms
+[2026-06-07 02:32:57 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:32:57 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:32:57 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:32:57 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:32:57 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:32:57 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:32:57 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:32:57 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:32:57 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:32:57 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 66.2559ms
+[2026-06-07 02:32:57 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 64.2177ms
+[2026-06-07 02:32:57 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 56.0742ms
+[2026-06-07 02:32:57 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 275.7475ms
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 275.4669ms
+[2026-06-07 02:32:57 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 270.0629ms
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 57.5225ms
+[2026-06-07 02:40:10 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 58.9992ms
+[2026-06-07 02:40:10 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 58.5801ms
+[2026-06-07 02:40:10 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 62.4063ms
+[2026-06-07 02:40:10 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 67.1837ms
+[2026-06-07 02:40:10 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 70.3174ms
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:40:10 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] CORS policy execution successful.
+[2026-06-07 02:40:10 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:10 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:10 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:10 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:40:10 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:40:10 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:40:11 INF] Executed DbCommand (49ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:11 INF] Executed DbCommand (39ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:11 INF] Executed DbCommand (50ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:11 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:11 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:11 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:11 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 342.1275ms
+[2026-06-07 02:40:11 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:11 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 362.5274ms
+[2026-06-07 02:40:11 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:40:11 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 382.4979ms
+[2026-06-07 02:40:11 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:11 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] CORS policy execution successful.
+[2026-06-07 02:40:11 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] CORS policy execution successful.
+[2026-06-07 02:40:11 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] CORS policy execution successful.
+[2026-06-07 02:40:11 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 518.761ms
+[2026-06-07 02:40:11 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 551.5903ms
+[2026-06-07 02:40:11 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 566.7798ms
+[2026-06-07 02:40:11 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:40:11 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:40:11 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:40:11 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:11 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:11 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:11 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:11 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:11 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:11 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 49.5164ms
+[2026-06-07 02:40:11 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 47.011ms
+[2026-06-07 02:40:11 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 49.2542ms
+[2026-06-07 02:40:11 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:11 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 207.6235ms
+[2026-06-07 02:40:11 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 205.4116ms
+[2026-06-07 02:40:11 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 198.8941ms
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 64.1661ms
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 87.39ms
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 91.753ms
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 105.3321ms
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 111.6634ms
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 132.6194ms
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:40:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] CORS policy execution successful.
+[2026-06-07 02:40:53 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:40:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:40:53 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:40:53 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:53 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:40:53 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:40:53 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:53 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:53 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:40:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:53 INF] Executed DbCommand (7ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:53 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 151.7757ms
+[2026-06-07 02:40:53 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:53 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 140.9845ms
+[2026-06-07 02:40:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executed DbCommand (10ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:40:53 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 145.9503ms
+[2026-06-07 02:40:53 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 180.2936ms
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 372.6235ms
+[2026-06-07 02:40:53 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 101.8344ms
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 398.2028ms
+[2026-06-07 02:40:53 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:40:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 215.5899ms
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 413.226ms
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 436.7011ms
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 368.1191ms
+[2026-06-07 02:40:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:40:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 448.7153ms
+[2026-06-07 02:43:35 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 02:43:35 INF] CORS policy execution successful.
+[2026-06-07 02:43:35 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 204 null null 34.656ms
+[2026-06-07 02:43:35 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 02:43:35 INF] CORS policy execution successful.
+[2026-06-07 02:43:35 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 02:43:35 INF] Route matched with {action = "GetStreamById", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamById(System.Guid) on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:43:35 INF] Executed DbCommand (33ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s0."Id", s0."Name", s0."RegNumber", s0."StreamId", s4."StreamId", s4."SubjectId", s4."Id", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name"
+    FROM "Streams" AS s
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN "Students" AS s0 ON s3."Id" = s0."StreamId"
+LEFT JOIN (
+    SELECT s1."StreamId", s1."SubjectId", s2."Id", s2."Code", s2."Name"
+    FROM "StreamSubjects" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StreamId"
+ORDER BY s3."Id", s0."Id", s4."StreamId", s4."SubjectId"
+[2026-06-07 02:43:35 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Stream.StreamDetailDto'.
+[2026-06-07 02:43:35 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy) in 146.8453ms
+[2026-06-07 02:43:35 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 02:43:35 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 200 null application/json; charset=utf-8 188.26ms
+[2026-06-07 02:43:45 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 02:43:45 INF] CORS policy execution successful.
+[2026-06-07 02:43:45 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 204 null null 22.0703ms
+[2026-06-07 02:43:45 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - null null
+[2026-06-07 02:43:45 INF] CORS policy execution successful.
+[2026-06-07 02:43:45 INF] Executing endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 02:43:45 INF] Route matched with {action = "GetStreamReport", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamReport(System.Guid, System.Nullable`1[System.Guid]) on controller IKONEX_Academy.Controllers.ReportsController (IKONEX-Academy).
+[2026-06-07 02:43:45 INF] Executed DbCommand (5ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 02:43:45 INF] Executed DbCommand (12ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Id", s0."Code", s0."Name"
+FROM "StreamSubjects" AS s
+INNER JOIN "Subjects" AS s0 ON s."SubjectId" = s0."Id"
+WHERE s."StreamId" = @__streamId_0
+[2026-06-07 02:43:45 INF] Executed DbCommand (12ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s2."Id", s2."CAScore", s2."ExamScore", s2."StudentId", s2."SubjectId", s2."TotalScore", s2."Id0", s2."Code", s2."Name"
+FROM "Students" AS s
+LEFT JOIN (
+    SELECT s0."Id", s0."CAScore", s0."ExamScore", s0."StudentId", s0."SubjectId", s0."TotalScore", s1."Id" AS "Id0", s1."Code", s1."Name"
+    FROM "Scores" AS s0
+    INNER JOIN "Subjects" AS s1 ON s0."SubjectId" = s1."Id"
+) AS s2 ON s."Id" = s2."StudentId"
+WHERE s."StreamId" = @__streamId_0
+ORDER BY s."Id", s2."Id"
+[2026-06-07 02:43:45 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Report.StreamReportDto'.
+[2026-06-07 02:43:45 INF] Executed action IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy) in 108.0245ms
+[2026-06-07 02:43:45 INF] Executed endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 02:43:45 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/reports/stream/a54d0a3a-0354-4e30-8184-bd0167fe64f8 - 200 null application/json; charset=utf-8 149.2035ms
+[2026-06-07 02:43:50 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 02:43:50 INF] CORS policy execution successful.
+[2026-06-07 02:43:50 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - 204 null null 21.8612ms
+[2026-06-07 02:43:51 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 02:43:51 INF] CORS policy execution successful.
+[2026-06-07 02:43:51 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 02:43:51 INF] Route matched with {action = "GetStreamById", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamById(System.Guid) on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:43:51 INF] Executed DbCommand (2ms) [Parameters=[@__id_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s3."Id", s3."Name", s0."Id", s0."Name", s0."RegNumber", s0."StreamId", s4."StreamId", s4."SubjectId", s4."Id", s4."Code", s4."Name"
+FROM (
+    SELECT s."Id", s."Name"
+    FROM "Streams" AS s
+    WHERE s."Id" = @__id_0
+    LIMIT 1
+) AS s3
+LEFT JOIN "Students" AS s0 ON s3."Id" = s0."StreamId"
+LEFT JOIN (
+    SELECT s1."StreamId", s1."SubjectId", s2."Id", s2."Code", s2."Name"
+    FROM "StreamSubjects" AS s1
+    INNER JOIN "Subjects" AS s2 ON s1."SubjectId" = s2."Id"
+) AS s4 ON s3."Id" = s4."StreamId"
+ORDER BY s3."Id", s0."Id", s4."StreamId", s4."SubjectId"
+[2026-06-07 02:43:51 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Stream.StreamDetailDto'.
+[2026-06-07 02:43:51 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy) in 28.0801ms
+[2026-06-07 02:43:51 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetStreamById (IKONEX-Academy)'
+[2026-06-07 02:43:51 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams/6954762e-52c9-4144-8703-7dcf18c50366 - 200 null application/json; charset=utf-8 76.3953ms
+[2026-06-07 02:43:52 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 02:43:52 INF] CORS policy execution successful.
+[2026-06-07 02:43:52 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 204 null null 35.3504ms
+[2026-06-07 02:43:52 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - null null
+[2026-06-07 02:43:52 INF] CORS policy execution successful.
+[2026-06-07 02:43:52 INF] Executing endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 02:43:52 INF] Route matched with {action = "GetStreamReport", controller = "Reports"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetStreamReport(System.Guid, System.Nullable`1[System.Guid]) on controller IKONEX_Academy.Controllers.ReportsController (IKONEX-Academy).
+[2026-06-07 02:43:53 INF] Executed DbCommand (1ms) [Parameters=[@__p_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+WHERE s."Id" = @__p_0
+LIMIT 1
+[2026-06-07 02:43:53 INF] Executed DbCommand (1ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s0."Id", s0."Code", s0."Name"
+FROM "StreamSubjects" AS s
+INNER JOIN "Subjects" AS s0 ON s."SubjectId" = s0."Id"
+WHERE s."StreamId" = @__streamId_0
+[2026-06-07 02:43:53 INF] Executed DbCommand (2ms) [Parameters=[@__streamId_0='?' (DbType = Guid)], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId", s2."Id", s2."CAScore", s2."ExamScore", s2."StudentId", s2."SubjectId", s2."TotalScore", s2."Id0", s2."Code", s2."Name"
+FROM "Students" AS s
+LEFT JOIN (
+    SELECT s0."Id", s0."CAScore", s0."ExamScore", s0."StudentId", s0."SubjectId", s0."TotalScore", s1."Id" AS "Id0", s1."Code", s1."Name"
+    FROM "Scores" AS s0
+    INNER JOIN "Subjects" AS s1 ON s0."SubjectId" = s1."Id"
+) AS s2 ON s."Id" = s2."StudentId"
+WHERE s."StreamId" = @__streamId_0
+ORDER BY s."Id", s2."Id"
+[2026-06-07 02:43:53 INF] Executing OkObjectResult, writing value of type 'IKONEX_Academy.DTOs.Report.StreamReportDto'.
+[2026-06-07 02:43:53 INF] Executed action IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy) in 53.7438ms
+[2026-06-07 02:43:53 INF] Executed endpoint 'IKONEX_Academy.Controllers.ReportsController.GetStreamReport (IKONEX-Academy)'
+[2026-06-07 02:43:53 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/reports/stream/6954762e-52c9-4144-8703-7dcf18c50366 - 200 null application/json; charset=utf-8 98.8222ms
+[2026-06-07 02:44:07 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:44:07 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:44:07 INF] CORS policy execution successful.
+[2026-06-07 02:44:07 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:44:07 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 02:44:07 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 02:44:07 INF] CORS policy execution successful.
+[2026-06-07 02:44:07 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 02:44:07 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 287.7544ms
+[2026-06-07 02:44:07 INF] CORS policy execution successful.
+[2026-06-07 02:44:07 INF] CORS policy execution successful.
+[2026-06-07 02:44:07 INF] CORS policy execution successful.
+[2026-06-07 02:44:07 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 356.9623ms
+[2026-06-07 02:44:07 INF] CORS policy execution successful.
+[2026-06-07 02:44:08 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:44:08 INF] CORS policy execution successful.
+[2026-06-07 02:44:08 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:44:08 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 402.3762ms
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 336.1041ms
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 301.0127ms
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 271.557ms
+[2026-06-07 02:44:08 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:08 INF] CORS policy execution successful.
+[2026-06-07 02:44:08 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:44:08 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:08 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 296.7396ms
+[2026-06-07 02:44:08 INF] CORS policy execution successful.
+[2026-06-07 02:44:08 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 437.2466ms
+[2026-06-07 02:44:08 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:44:08 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:44:08 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:08 INF] CORS policy execution successful.
+[2026-06-07 02:44:08 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:44:08 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:08 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 102.9971ms
+[2026-06-07 02:44:08 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:08 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:44:08 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:08 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 114.4395ms
+[2026-06-07 02:44:08 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] CORS policy execution successful.
+[2026-06-07 02:44:08 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 638.9057ms
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 452.9375ms
+[2026-06-07 02:44:08 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:44:08 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:44:08 INF] CORS policy execution successful.
+[2026-06-07 02:44:08 INF] Executed DbCommand (6ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:08 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:08 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Executed DbCommand (2ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:08 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 85.5421ms
+[2026-06-07 02:44:08 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:08 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:08 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:44:08 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 366.0991ms
+[2026-06-07 02:44:09 INF] Executed DbCommand (3ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 235.191ms
+[2026-06-07 02:44:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 65.329ms
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 673.1363ms
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 392.6058ms
+[2026-06-07 02:44:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:44:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:44:09 INF] CORS policy execution successful.
+[2026-06-07 02:44:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:44:09 INF] CORS policy execution successful.
+[2026-06-07 02:44:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:44:09 INF] CORS policy execution successful.
+[2026-06-07 02:44:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:44:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:09 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:44:09 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 37.3715ms
+[2026-06-07 02:44:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 02:44:09 INF] CORS policy execution successful.
+[2026-06-07 02:44:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 46.9057ms
+[2026-06-07 02:44:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 02:44:09 INF] CORS policy execution successful.
+[2026-06-07 02:44:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:09 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 182.2161ms
+[2026-06-07 02:44:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 72.878ms
+[2026-06-07 02:44:09 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 150.7762ms
+[2026-06-07 02:44:09 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 247.7735ms
+[2026-06-07 02:44:09 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 02:44:09 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:09 INF] CORS policy execution successful.
+[2026-06-07 02:44:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 127.4491ms
+[2026-06-07 02:44:09 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 64.6597ms
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 251.3162ms
+[2026-06-07 02:44:09 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 221.934ms
+[2026-06-07 02:44:09 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 02:44:09 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 55.2509ms
+[2026-06-07 02:44:09 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 02:44:09 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 165.5369ms
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/streams - null null
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/students - null null
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - null null
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 64.3181ms
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 65.3946ms
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 64.6805ms
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/streams - 204 null null 66.7176ms
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/students - 204 null null 68.1604ms
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 OPTIONS http://localhost:5178/api/subjects - 204 null null 70.5383ms
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 03:00:16 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 03:00:16 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 03:00:16 INF] Executed DbCommand (92ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 03:00:16 INF] Executed DbCommand (90ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 03:00:16 INF] Executed DbCommand (91ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 03:00:16 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 03:00:16 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 03:00:16 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 03:00:16 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 289.8962ms
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/streams - null null
+[2026-06-07 03:00:16 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 282.8355ms
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/subjects - null null
+[2026-06-07 03:00:16 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 291.8072ms
+[2026-06-07 03:00:16 INF] Request starting HTTP/1.1 GET http://localhost:5178/api/students - null null
+[2026-06-07 03:00:16 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] CORS policy execution successful.
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 425.1289ms
+[2026-06-07 03:00:16 INF] Executing endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 416.9916ms
+[2026-06-07 03:00:16 INF] Executing endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 428.3386ms
+[2026-06-07 03:00:16 INF] Executing endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Route matched with {action = "GetAllStreams", controller = "Streams"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStreams() on controller IKONEX_Academy.Controllers.StreamsController (IKONEX-Academy).
+[2026-06-07 03:00:16 INF] Route matched with {action = "GetAllSubjects", controller = "Subjects"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllSubjects() on controller IKONEX_Academy.Controllers.SubjectsController (IKONEX-Academy).
+[2026-06-07 03:00:16 INF] Route matched with {action = "GetAllStudents", controller = "Students"}. Executing controller action with signature System.Threading.Tasks.Task`1[Microsoft.AspNetCore.Mvc.IActionResult] GetAllStudents() on controller IKONEX_Academy.Controllers.StudentsController (IKONEX-Academy).
+[2026-06-07 03:00:16 INF] Executed DbCommand (4ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name"
+FROM "Streams" AS s
+ORDER BY s."Name"
+[2026-06-07 03:00:16 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."Code"
+FROM "Subjects" AS s
+ORDER BY s."Name"
+[2026-06-07 03:00:16 INF] Executed DbCommand (1ms) [Parameters=[], CommandType='"Text"', CommandTimeout='30']
+SELECT s."Id", s."Name", s."RegNumber", s."StreamId"
+FROM "Students" AS s
+ORDER BY s."Name"
+[2026-06-07 03:00:16 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Stream.StreamDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 03:00:16 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Subject.SubjectDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 03:00:16 INF] Executing OkObjectResult, writing value of type 'System.Collections.Generic.List`1[[IKONEX_Academy.DTOs.Student.StudentDto, IKONEX-Academy, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]'.
+[2026-06-07 03:00:16 INF] Executed action IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy) in 38.9535ms
+[2026-06-07 03:00:16 INF] Executed action IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy) in 37.0437ms
+[2026-06-07 03:00:16 INF] Executed action IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy) in 32.1305ms
+[2026-06-07 03:00:16 INF] Executed endpoint 'IKONEX_Academy.Controllers.StreamsController.GetAllStreams (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Executed endpoint 'IKONEX_Academy.Controllers.SubjectsController.GetAllSubjects (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Executed endpoint 'IKONEX_Academy.Controllers.StudentsController.GetAllStudents (IKONEX-Academy)'
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/streams - 200 null application/json; charset=utf-8 157.6183ms
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/subjects - 200 null application/json; charset=utf-8 156.4429ms
+[2026-06-07 03:00:16 INF] Request finished HTTP/1.1 GET http://localhost:5178/api/students - 200 null application/json; charset=utf-8 156.4143ms

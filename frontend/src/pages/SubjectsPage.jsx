@@ -8,7 +8,7 @@ const EMPTY_SUBJECT_FORM = { name: '', code: '', id: null };
 
 export default function SubjectsPage() {
   useEffect(() => {
-    document.title = 'Subject Manager - IKONEX Academy';
+    document.title = 'Subjects - IKONEX Academy';
   }, []);
   const { authFetch } = useAuth();
   const { subjects, fetchBaselineData, showToast } = useApp();
@@ -58,7 +58,7 @@ export default function SubjectsPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Subject Manager</h2>
+        <h2 className="page-title">Subjects</h2>
       </div>
 
       <div className="card-grid">

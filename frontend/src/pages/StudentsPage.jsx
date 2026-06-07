@@ -9,7 +9,7 @@ const EMPTY_STUDENT_FORM = { name: '', regNumber: '', streamId: '', id: null };
 
 export default function StudentsPage() {
   useEffect(() => {
-    document.title = 'Student Roster - IKONEX Academy';
+    document.title = 'Students - IKONEX Academy';
   }, []);
   const { authFetch } = useAuth();
   const { streams, students, fetchBaselineData, setLoading, showToast } = useApp();
@@ -93,7 +93,7 @@ export default function StudentsPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Student Roster</h2>
+        <h2 className="page-title">Students</h2>
       </div>
 
       <div className="card-grid">

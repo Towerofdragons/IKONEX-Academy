@@ -44,8 +44,10 @@ export default function LoginPage() {
       <Toast />
       <div className="login-card">
         <div className="login-header">
-          <div className="brand-logo" style={{ margin: '0 auto 1rem auto' }}>IKONEX ACADEMY</div>
-          <h2 className="brand-name" style={{ textAlign: 'center', fontSize: '1.5rem', fontWeight: '600', color: 'var(--text-primary)' }}>Student Management Admin</h2>
+          <div style={{ textAlign: 'center', marginBottom: '0.25rem' }}>
+            <h1 style={{ fontSize: '1.5rem', fontWeight: '700', color: 'var(--text-primary)', letterSpacing: '0.5px', margin: 0 }}>IKONEX ACADEMY</h1>
+            <p style={{ fontSize: '0.75rem', color: 'var(--text-secondary)', fontWeight: '500', letterSpacing: '0.25px', margin: '0.25rem 0 1rem 0' }}>Student Management System</p>
+          </div>
           <p style={{ color: 'var(--text-secondary)', textAlign: 'center', marginTop: '0.5rem', fontSize: '0.875rem' }}>Sign in to access school administration</p>
         </div>
         <form onSubmit={handleLogin} style={{ marginTop: '2rem' }}>

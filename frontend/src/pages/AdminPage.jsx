@@ -6,7 +6,7 @@ import { parseErrorMessage } from '../utils/errors';
 
 export default function AdminPage() {
   useEffect(() => {
-    document.title = 'Admin - IKONEX Academy';
+    document.title = 'Administration - IKONEX Academy';
   }, []);
   const { authFetch } = useAuth();
   const { loading, setLoading, showToast } = useApp();
@@ -40,7 +40,7 @@ export default function AdminPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Admin</h2>
+        <h2 className="page-title">Administration</h2>
       </div>
 
       <div className="card-grid">

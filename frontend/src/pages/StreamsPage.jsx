@@ -9,7 +9,7 @@ import { BarChart3, Download } from 'lucide-react';
 
 export default function StreamsPage() {
   useEffect(() => {
-    document.title = 'Stream Manager - IKONEX Academy';
+    document.title = 'Classes - IKONEX Academy';
   }, []);
   const { authFetch } = useAuth();
   const { streams, subjects, fetchBaselineData, setLoading, showToast } = useApp();
@@ -132,7 +132,7 @@ export default function StreamsPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Stream Manager</h2>
+        <h2 className="page-title">Classes</h2>
       </div>
 
       <div className="card-grid">

@@ -8,7 +8,7 @@ const EMPTY_SCORE_FORM = { studentId: '', subjectId: '', examScore: '', caScore:
 
 export default function ScoresPage() {
   useEffect(() => {
-    document.title = 'Scoring Board - IKONEX Academy';
+    document.title = 'Grades - IKONEX Academy';
   }, []);
   const { authFetch } = useAuth();
   const { students, subjects, fetchBaselineData, setLoading, showToast } = useApp();
@@ -82,7 +82,7 @@ export default function ScoresPage() {
   return (
     <div>
       <div className="header-row">
-        <h2 className="page-title">Scoring Board</h2>
+        <h2 className="page-title">Grades</h2>
       </div>
 
       <div className="card-grid">

@@ -3,12 +3,12 @@ import { useAuth } from '../../hooks/useAuth';
 import { useApp } from '../../hooks/useApp';
 
 const NAV_ITEMS = [
-  { to: '/', label: 'Dashboard', end: true },
-  { to: '/streams', label: 'Stream Manager' },
-  { to: '/students', label: 'Student Roster' },
-  { to: '/subjects', label: 'Subject Manager' },
-  { to: '/scores', label: 'Scoring Board' },
-  { to: '/admin', label: 'Admin' },
+  { to: '/', label: 'Overview', end: true },
+  { to: '/streams', label: 'Classes' },
+  { to: '/students', label: 'Students' },
+  { to: '/subjects', label: 'Subjects' },
+  { to: '/scores', label: 'Grades' },
+  { to: '/admin', label: 'Administration' },
 ];
 
 export default function Sidebar() {
@@ -26,7 +26,8 @@ export default function Sidebar() {
   return (
     <aside className="sidebar">
       <div className="brand-section">
-        <div className="brand-logo">Ikonex Academy</div>
+        <div className="brand-logo">IKONEX ACADEMY</div>
+        <div className="brand-subtitle">Student Management System</div>
       </div>
       <div></div>
       <nav>
